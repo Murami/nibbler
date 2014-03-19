@@ -1,0 +1,39 @@
+GAME DESIGN:
+
+Principes de bases :
+ Il faut recuperer de la nouriture qui pop sur le plateau de jeu regulierment. Le serpent dispose de
+ 2 jauge, une de vie qui quand elle est vidé siginifie un game over, et une de faim qui quand elle est
+ vidée depop la vie regulierement.
+
+ Plus le serpent est grand et plus la faim augmente (plus a nourir ... et ca augmente
+ la difficultée de facon croissante).
+
+Pour se differencier du snake classique :
+-  De mutliples ennemi pouront pop au cours de la partie
+-  Pourquoi pas un systeme de lvl boss avec une strat different a chaque fois ?
+
+Et pour partir encore plus loin (juste au cas ou ...) :
+-  Niveau scripté avec le temps (transformation du terrain, perte de cass, etc)
+-  Niveau avec scrolling dont le but est d'atteindre le boss tout etant rassasié ?
+
+- Multiple Bonus :
+  - Perdre un de longueur
+  - Devenir invincible pendant x seconde (on depop les ennemis en passant dessus)
+  - Devenir immatarielle
+  - Pouvoir passer a "travers" la map et ressortir de l'autre coté pendant x secondes
+  - Se passer a travers pendant x secondes
+  - Clear tous les ennemis sur le plateau
+  - Ralentir pendant x secondes
+  - Armée d'un tir laser simple pendant x sec
+  - Armée de bombes pendant x secondes
+  - Plus de faim pendant x sec
+  - Heal
+  ... (plein d'autres si vous avez des idéees)
+
+- Des malus qui on en gros les effet inverse des bonus
+
+- Les bonus/malus ne peuvent étre obtenue que via un cube mystere
+  (a la mario kart, sans ca le joueur ne serait jamais sous l'effet d'un malus sinon)
+
+- Le rate malus/bonus doit etre aventeugeux pour le joueur sinon
+  il ne les prendra jamais
