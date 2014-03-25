@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Tue Mar 25 17:00:29 2014 
+// Last update Tue Mar 25 19:14:29 2014 
 //
 
 #include <iostream>
@@ -13,41 +13,89 @@
 
 Renderer::Renderer()
 {
+  m_window = new sf::RenderWindow(sf::VideoMode(64 * 20, 64 * 10), "Test");
+  // addTexture("SnakeHead", "Sprites/snake_head.bmp");
+  // addTexture("SnakeBody", "Sprites/snake_body.bmp");
+  // addTexture("Wall", "Sprites/wall.bmp");
+  // addTexture("Ground", "Sprites/ground.bmp");
 }
 
 Renderer::~Renderer()
 {
+  delete m_window;
 }
 
-void	Renderer::init()
+void	Renderer::close()
 {
-  m_window = new sf::RenderWindow(sf::VideoMode(64 * 20, 64 * 10), "Test");
-  if (m_window == NULL)
-    {
-      std::cout << "Window create failed" << std::endl;
-    }
-  m_image.create(64, 64, sf::Color(0, 0, 0));
-  m_texture.loadFromImage(m_image);
-  m_sprite.setTexture(m_texture);
-}
-
-void	Renderer::renderBlank() const
-{
-  sf::Event event;
-
-  m_window->clear(sf::Color(255, 0, 255));
-  m_window->display();
-  while (m_window->pollEvent(event))
-    {
-      if (event.type == sf::Event::Closed)
-	m_window->close();
-    }
+  m_window->close();
 }
 
 bool	Renderer::isOpen() const
 {
   return (m_window->isOpen());
 }
+
+Event	Renderer::getEvent() const
+{
+  sf::Event	event;
+
+  m_window->pollEvent(event);
+  if (event.type == sf::Event::Closed)
+    return (CLOSE);
+  return (NONE);
+}
+
+void	Renderer::clear() const
+{
+  m_window->clear(sf::Color(255, 255, 255));
+  m_window->display();
+}
+
+void	Renderer::drawSnakeHead(int x, int y) const
+{
+  (void) x;
+  (void) y;
+}
+
+void	Renderer::drawSnakeBody(int x, int y) const
+{
+  (void) x;
+  (void) y;
+}
+
+void	Renderer::drawFood(int x, int y) const
+{
+  (void) x;
+  (void) y;
+}
+
+void	Renderer::drawWall(int x, int y) const
+{
+  (void) x;
+  (void) y;
+}
+
+void	Renderer::drawGround(int x, int y) const
+{
+  (void) x;
+  (void) y;
+}
+
+void		Renderer::addTexture(const std::string& name, const std::string& file)
+{
+  //Il faut faire des vrais execptions !
+  if (m_textures.find(name) == m_textures.end())
+    throw std::string("texture name already used");
+  if (!m_textures[name].loadFromFile(file))
+    {
+      m_textures.erase(m_textures.find(name));
+      throw std::string("file not found");
+    }
+}
+
+/*
+** Render Factory
+*/
 
 IRenderer*	createRenderer()
 {

@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Tue Mar 25 17:02:02 2014 
+// Last update Tue Mar 25 19:13:48 2014 
 //
 
 #include <iostream>
@@ -15,16 +15,16 @@
 
 typedef   IRenderer*	(*renderFactory)() ;
 
-int	main()
+int	main(int argc, char** argv)
 {
   renderFactory	factory;
   void*		handle;
 
   // open .so
-  handle = dlopen("../sfml/bin/sfml-renderer.so", RTLD_NOW);
+  handle = dlopen("../sfml/bin/sfml-renderer.so", RTLD_LAZY);
   if (handle == NULL)
     {
-      std::cerr << "dlopen failed !" << std::endl;
+      std::cerr << dlerror() << std::endl;
       return (-1);
     }
 
@@ -32,16 +32,20 @@ int	main()
   factory = (renderFactory)dlsym(handle, "createRenderer");
   if (factory == NULL)
     {
-      std::cerr << "dlsym failed !" << std::endl;
+      std::cerr << dlerror() << std::endl;
       return (-1);
     }
 
   IRenderer* renderer = factory();
-  renderer->init();
   while (renderer->isOpen())
     {
-      renderer->renderBlank();
+      if (renderer->getEvent() == CLOSE)
+	{
+	  renderer->close();
+	}
+      renderer->clear();
     }
+  dlclose(handle);
   delete renderer;
   return (0);
 }

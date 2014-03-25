@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Tue Mar 25 16:46:07 2014 
+// Last update Tue Mar 25 19:12:35 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -21,15 +21,21 @@ public:
   Renderer();
   ~Renderer();
 
-  void	init();
-  void	renderBlank() const;
+  Event	getEvent() const;
+  void	close();
   bool	isOpen() const;
+  void	clear() const;
+  void	drawGround(int x, int y) const;
+  void	drawSnakeHead(int x, int y) const;
+  void	drawSnakeBody(int x, int y) const;
+  void	drawFood(int x, int y) const;
+  void	drawWall(int x, int y) const;
+
+  void	addTexture(const std::string& name, const std::string& file);
 
 private:
-  sf::RenderWindow*	m_window;
-  sf::Image		m_image;
-  sf::Texture		m_texture;
-  sf::Sprite		m_sprite;
+  sf::RenderWindow*			m_window;
+  std::map<std::string, sf::Texture>	m_textures;
 };
 
 extern "C"  IRenderer* createRenderer();
