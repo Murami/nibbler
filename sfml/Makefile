@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Tue Mar 25 18:43:05 2014 
+## Last update Wed Mar 26 17:14:13 2014 guerot_a
 ##
 
 ## FILES
@@ -24,9 +24,10 @@ DBIN		=	bin
 
 ## COMPILATION
 
-DINC		=	include		\
-			template	\
-			../shared/include
+DINC		=	include				\
+			template			\
+			../shared/include		\
+			dependencies/SFML-2.1/include
 
 CFLAGS		=	-Wall		\
 			-Wextra
@@ -37,9 +38,9 @@ LIB		=	sfml-graphics	\
 			sfml-system	\
 			sfml-window
 
-DLIB		=
+DLIB		=	dependencies/SFML-2.1/lib
 
-LDFLAGS		=
+LDFLAGS		=	-Wl,-rpath=../sfml/dependencies/SFML-2.1/lib
 
 ## RUNS
 
@@ -97,7 +98,8 @@ ifeq ($(DBGBOOL), no)
 endif
 
 CFLAGS		+=	$(CINC)
-LDFLAGS		+=	$(LIB)
+LDFLAGS		+=	$(DLIB)		\
+			$(LIB)
 
 ## MISC RULES
 
@@ -121,7 +123,7 @@ $(COBJ):	$(MAKEOBJ)
 		fi \
 		done
 		@echo "Compilation : $<"
-		@$(CC) -c $< -o $@ $(CFLAGS)
+		@$(CC) -fPIC -c $< -o $@ $(CFLAGS)
 
 clean:
 		@echo "Deleting obj files"

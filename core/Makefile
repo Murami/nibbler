@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Tue Mar 25 16:26:56 2014 
+## Last update Wed Mar 26 16:53:44 2014 guerot_a
 ##
 
 ## FILES
@@ -108,7 +108,7 @@ dbg:	$(CNAME)
 $(CNAME):	$(COBJ)
 		@$(MD) $(DBIN)
 		@echo "Linkage : $(CNAME)"
-		@$(CC) $(COBJ) -o $(CNAME) $(LDFLAGS)
+		$(CC) $(COBJ) -o $(CNAME) $(LDFLAGS)
 
 $(COBJ):	$(MAKEOBJ)
 		@$(MD) $(DOBJ)

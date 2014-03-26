@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Tue Mar 25 19:13:48 2014 
+// Last update Wed Mar 26 17:13:35 2014 guerot_a
 //
 
 #include <iostream>
@@ -40,9 +40,9 @@ int	main(int argc, char** argv)
   while (renderer->isOpen())
     {
       if (renderer->getEvent() == CLOSE)
-	{
-	  renderer->close();
-	}
+  	{
+  	  renderer->close();
+  	}
       renderer->clear();
     }
   dlclose(handle);
