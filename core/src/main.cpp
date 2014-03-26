@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Wed Mar 26 17:13:35 2014 guerot_a
+// Last update Wed Mar 26 17:51:01 2014 guerot_a
 //
 
 #include <iostream>
@@ -20,8 +20,11 @@ int	main(int argc, char** argv)
   renderFactory	factory;
   void*		handle;
 
+  if (argc != 2)
+    return (0);
+
   // open .so
-  handle = dlopen("../sfml/bin/sfml-renderer.so", RTLD_LAZY);
+  handle = dlopen(argv[1], RTLD_LAZY);
   if (handle == NULL)
     {
       std::cerr << dlerror() << std::endl;

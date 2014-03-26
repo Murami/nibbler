@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Wed Mar 26 17:32:42 2014 guerot_a
+## Last update Wed Mar 26 17:54:56 2014 guerot_a
 ##
 
 ## FILES
@@ -39,9 +39,9 @@ LIB		=	sfml-graphics	\
 			sfml-window
 
 DLIB		=	../dependencies/SFML-2.1/lib	\
-			dependencies/SFML-2.1/lib
 
-LDFLAGS		=	-Wl,-rpath=../dependencies/SFML-2.1/lib
+LDFLAGS		=	-Wl,-rpath=../dependencies/SFML-2.1/lib	\
+			-Wl,-rpath=./dependencies/SFML-2.1/lib
 
 ## RUNS
 

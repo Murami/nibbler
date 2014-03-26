@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Wed Mar 26 17:33:20 2014 guerot_a
-## Last update Wed Mar 26 17:48:31 2014 guerot_a
+## Last update Wed Mar 26 18:04:59 2014 guerot_a
 ##
 
 all:	core sfml opengl
@@ -14,21 +14,21 @@ core:
 	@echo "[core]"
 	@make -s -C core/
 	@echo "Copie des binaires dans bin/"
-	@cp core/bin/* bin/
+	@cp -f core/bin/* bin/
 	@echo " "
 
 sfml:
 	@echo "[API SFML]"
 	@make -s -C sfml/
 	@echo "Copie des binaires dans bin/"
-	@cp sfml/bin/* bin/
+	@cp -f sfml/bin/* bin/
 	@echo " "
 
 opengl:
 	@echo "[API OpenGL]"
 	@make -s -C opengl/
 	@echo "Copie des binaires dans bin/"
-	@cp opengl/bin/* bin/
+	@cp -f opengl/bin/* bin/
 	@echo " "
 
 clean:
