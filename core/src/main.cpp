@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Wed Mar 26 17:51:01 2014 guerot_a
+// Last update Thu Mar 27 13:40:43 2014 guerot_a
 //
 
 #include <iostream>
@@ -21,7 +21,10 @@ int	main(int argc, char** argv)
   void*		handle;
 
   if (argc != 2)
-    return (0);
+    {
+      std::cerr << "missing argument" << std::endl;
+      return (-1);
+    }
 
   // open .so
   handle = dlopen(argv[1], RTLD_LAZY);
@@ -39,14 +42,35 @@ int	main(int argc, char** argv)
       return (-1);
     }
 
+  //////////////////////
+
+  int	x = 0;
+  int	y = 3;
+
   IRenderer* renderer = factory();
   while (renderer->isOpen())
     {
+      switch(renderer->getEvent())
+	{
+	case CLOSE:
+	  renderer->close();
+	  break;
+
+	case RIGHT:
+	  x++;
+	  break;
+
+	case LEFT:
+	  x--;
+	  break;
+	}
       if (renderer->getEvent() == CLOSE)
   	{
   	  renderer->close();
   	}
       renderer->clear();
+      renderer->drawSnakeHead(x, y);
+      renderer->update();
     }
   dlclose(handle);
   delete renderer;

@@ -5,10 +5,10 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Wed Mar 26 17:33:20 2014 guerot_a
-## Last update Wed Mar 26 18:04:59 2014 guerot_a
+## Last update Thu Mar 27 13:43:30 2014 guerot_a
 ##
 
-all:	core sfml opengl
+all:	core sfml
 
 core:
 	@echo "[core]"

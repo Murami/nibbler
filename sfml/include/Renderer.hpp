@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Tue Mar 25 19:12:35 2014 
+// Last update Thu Mar 27 13:43:08 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -14,6 +14,10 @@
 
 #include <SFML/Graphics.hpp>
 #include "RenderAPI.hpp"
+
+#define TILESIZE	32
+#define NB_TILEY	10
+#define NB_TILEX	10
 
 class Renderer : public IRenderer
 {
@@ -25,13 +29,14 @@ public:
   void	close();
   bool	isOpen() const;
   void	clear() const;
+  void	update() const;
   void	drawGround(int x, int y) const;
   void	drawSnakeHead(int x, int y) const;
   void	drawSnakeBody(int x, int y) const;
   void	drawFood(int x, int y) const;
   void	drawWall(int x, int y) const;
 
-  void	addTexture(const std::string& name, const std::string& file);
+  void	draw(const std::string& ressource, int x, int y) const;
 
 private:
   sf::RenderWindow*			m_window;

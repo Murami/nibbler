@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:15:40 2014
-// Last update Tue Mar 25 19:13:57 2014 
+// Last update Thu Mar 27 13:38:55 2014 guerot_a
 //
 
 #ifndef RENDERAPI_HPP
@@ -29,6 +29,7 @@ public:
   virtual void	close() = 0;
   virtual bool	isOpen() const = 0;
   virtual void	clear() const = 0;
+  virtual void	update() const = 0;
   virtual void	drawGround(int x, int y) const = 0;
   virtual void	drawSnakeHead(int x, int y) const = 0;
   virtual void	drawSnakeBody(int x, int y) const = 0;

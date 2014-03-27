@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Tue Mar 25 19:14:29 2014 
+// Last update Thu Mar 27 13:42:23 2014 guerot_a
 //
 
 #include <iostream>
@@ -13,11 +13,25 @@
 
 Renderer::Renderer()
 {
-  m_window = new sf::RenderWindow(sf::VideoMode(64 * 20, 64 * 10), "Test");
-  // addTexture("SnakeHead", "Sprites/snake_head.bmp");
-  // addTexture("SnakeBody", "Sprites/snake_body.bmp");
-  // addTexture("Wall", "Sprites/wall.bmp");
-  // addTexture("Ground", "Sprites/ground.bmp");
+  sf::Image	tile;
+
+  m_window = new sf::RenderWindow(sf::VideoMode(NB_TILEX * TILESIZE, NB_TILEY * TILESIZE), "Test");
+
+  tile.create(TILESIZE, TILESIZE, sf::Color(255, 0, 0));
+  m_textures["wall"].loadFromImage(tile);
+
+  tile.create(TILESIZE, TILESIZE, sf::Color(200, 200, 200));
+  m_textures["ground"].loadFromImage(tile);
+
+  tile.create(TILESIZE, TILESIZE, sf::Color(0, 255, 255));
+  m_textures["snakeHead"].loadFromImage(tile);
+
+  tile.create(TILESIZE, TILESIZE, sf::Color(0, 255, 0));
+  m_textures["snakeBody"].loadFromImage(tile);
+
+  tile.create(TILESIZE, TILESIZE, sf::Color(0, 0, 255));
+  m_textures["food"].loadFromImage(tile);
+
 }
 
 Renderer::~Renderer()
@@ -42,55 +56,65 @@ Event	Renderer::getEvent() const
   m_window->pollEvent(event);
   if (event.type == sf::Event::Closed)
     return (CLOSE);
+  if (event.type == sf::Event::KeyPressed)
+    {
+      switch (event.key.code)
+	{
+	case sf::Keyboard::Left:
+	  return (LEFT);
+
+	case sf::Keyboard::Right:
+	  return (RIGHT);
+
+	default:
+	  return (NONE);
+	}
+    }
   return (NONE);
 }
 
 void	Renderer::clear() const
 {
   m_window->clear(sf::Color(255, 255, 255));
+}
+
+void	Renderer::update() const
+{
   m_window->display();
 }
 
 void	Renderer::drawSnakeHead(int x, int y) const
 {
-  (void) x;
-  (void) y;
+  this->draw("snakeHead", x, y);
 }
 
 void	Renderer::drawSnakeBody(int x, int y) const
 {
-  (void) x;
-  (void) y;
+  this->draw("snakeBody", x, y);
 }
 
 void	Renderer::drawFood(int x, int y) const
 {
-  (void) x;
-  (void) y;
+  this->draw("food", x, y);
 }
 
 void	Renderer::drawWall(int x, int y) const
 {
-  (void) x;
-  (void) y;
+  this->draw("wall", x, y);
 }
 
 void	Renderer::drawGround(int x, int y) const
 {
-  (void) x;
-  (void) y;
+  this->draw("ground", x, y);
 }
 
-void		Renderer::addTexture(const std::string& name, const std::string& file)
+void	Renderer::draw(const std::string& ressource, int x, int y) const
 {
-  //Il faut faire des vrais execptions !
-  if (m_textures.find(name) == m_textures.end())
-    throw std::string("texture name already used");
-  if (!m_textures[name].loadFromFile(file))
-    {
-      m_textures.erase(m_textures.find(name));
-      throw std::string("file not found");
-    }
+  sf::Sprite	sprite;
+
+  sprite.setTexture(m_textures.at(ressource));
+  sprite.setPosition(x * TILESIZE, m_window->getSize().y - y * TILESIZE);
+  m_window->draw(sprite);
 }
 
 /*
