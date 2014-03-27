@@ -5,13 +5,15 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Thu Mar 27 13:40:43 2014 guerot_a
+// Last update Thu Mar 27 18:21:00 2014 guerot_a
 //
 
 #include <iostream>
 #include <cstdlib>
 #include <dlfcn.h>
 #include "RenderAPI.hpp"
+
+#include "Vector2.hpp"
 
 typedef   IRenderer*	(*renderFactory)() ;
 
