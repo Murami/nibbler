@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 17:53:14 2014 guerot_a
-// Last update Thu Mar 27 19:35:45 2014 guerot_a
+// Last update Fri Mar 28 13:58:36 2014 guerot_a
 //
 
 #ifndef VECTOR2_HPP
@@ -106,6 +106,12 @@ public:
 
     newVector /= factor;
     return (newVector);
+  }
+
+  void	operator()(T _x, T _y)
+  {
+    x = _x;
+    y = _y;
   }
 
   T	x;

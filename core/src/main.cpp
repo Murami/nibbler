@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Thu Mar 27 18:21:00 2014 guerot_a
+// Last update Sat Mar 29 17:58:51 2014 guerot_a
 //
 
 #include <iostream>
@@ -15,66 +15,26 @@
 
 #include "Vector2.hpp"
 
-typedef   IRenderer*	(*renderFactory)() ;
+void	nibbler(const std::string& libpath)
+{
+  Game		game(Renderer(libpath));
+
+  game.run();
+}
 
 int	main(int argc, char** argv)
 {
-  renderFactory	factory;
-  void*		handle;
-
-  if (argc != 2)
+  try
     {
-      std::cerr << "missing argument" << std::endl;
-      return (-1);
+      if (argc != 2)
+	std::cout << "Usage: ./nibbler renderer-lib.so" << std::endl;
+      else
+	nibbler(argv[2]);
     }
-
-  // open .so
-  handle = dlopen(argv[1], RTLD_LAZY);
-  if (handle == NULL)
+  catch (const std::exception& e)
     {
-      std::cerr << dlerror() << std::endl;
-      return (-1);
+      std::cerr << e.what() << std::endl;
+      return (EXIT_FAILURE);
     }
-
-  // load library
-  factory = (renderFactory)dlsym(handle, "createRenderer");
-  if (factory == NULL)
-    {
-      std::cerr << dlerror() << std::endl;
-      return (-1);
-    }
-
-  //////////////////////
-
-  int	x = 0;
-  int	y = 3;
-
-  IRenderer* renderer = factory();
-  while (renderer->isOpen())
-    {
-      switch(renderer->getEvent())
-	{
-	case CLOSE:
-	  renderer->close();
-	  break;
-
-	case RIGHT:
-	  x++;
-	  break;
-
-	case LEFT:
-	  x--;
-	  break;
-	}
-      if (renderer->getEvent() == CLOSE)
-  	{
-  	  renderer->close();
-  	}
-      renderer->clear();
-      renderer->drawSnakeHead(x, y);
-      renderer->update();
-    }
-  dlclose(handle);
-  delete renderer;
-  return (0);
+  return (EXIT_SUCCESS);
 }
