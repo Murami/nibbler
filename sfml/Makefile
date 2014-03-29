@@ -5,12 +5,12 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Thu Mar 27 13:27:52 2014 guerot_a
+## Last update Sat Mar 29 22:42:27 2014 guerot_a
 ##
 
 ## FILES
 
-NAME		=	sfml-renderer.so
+NAME		=	lib_nibbler_sfml16.so
 
 SRC		=	Renderer
 
@@ -26,8 +26,7 @@ DBIN		=	bin
 
 DINC		=	include				\
 			template			\
-			../shared/include		\
-			../dependencies/SFML-2.1/include
+			../shared/include
 
 CFLAGS		=	-Wall		\
 			-Wextra
@@ -38,10 +37,9 @@ LIB		=	sfml-graphics	\
 			sfml-system	\
 			sfml-window
 
-DLIB		=	../dependencies/SFML-2.1/lib	\
+DLIB		=
 
-LDFLAGS		=	-Wl,-rpath=../dependencies/SFML-2.1/lib	\
-			-Wl,-rpath=./dependencies/SFML-2.1/lib
+LDFLAGS		=
 
 ## RUNS
 

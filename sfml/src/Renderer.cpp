@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Thu Mar 27 13:42:23 2014 guerot_a
+// Last update Sat Mar 29 22:32:15 2014 guerot_a
 //
 
 #include <iostream>
@@ -17,21 +17,10 @@ Renderer::Renderer()
 
   m_window = new sf::RenderWindow(sf::VideoMode(NB_TILEX * TILESIZE, NB_TILEY * TILESIZE), "Test");
 
-  tile.create(TILESIZE, TILESIZE, sf::Color(255, 0, 0));
-  m_textures["wall"].loadFromImage(tile);
-
-  tile.create(TILESIZE, TILESIZE, sf::Color(200, 200, 200));
-  m_textures["ground"].loadFromImage(tile);
-
-  tile.create(TILESIZE, TILESIZE, sf::Color(0, 255, 255));
-  m_textures["snakeHead"].loadFromImage(tile);
-
-  tile.create(TILESIZE, TILESIZE, sf::Color(0, 255, 0));
-  m_textures["snakeBody"].loadFromImage(tile);
-
-  tile.create(TILESIZE, TILESIZE, sf::Color(0, 0, 255));
-  m_textures["food"].loadFromImage(tile);
-
+  m_tiles["wall"].Create(TILESIZE, TILESIZE, sf::Color(255, 0, 0));
+  m_tiles["ground"].Create(TILESIZE, TILESIZE, sf::Color(200, 200, 200));
+  m_tiles["snake"].Create(TILESIZE, TILESIZE, sf::Color(0, 255, 255));
+  m_tiles["food"].Create(TILESIZE, TILESIZE, sf::Color(0, 0, 255));
 }
 
 Renderer::~Renderer()
@@ -41,30 +30,36 @@ Renderer::~Renderer()
 
 void	Renderer::close()
 {
-  m_window->close();
+  m_window->Close();
 }
 
 bool	Renderer::isOpen() const
 {
-  return (m_window->isOpen());
+  return (m_window->IsOpened());
 }
 
 Event	Renderer::getEvent() const
 {
   sf::Event	event;
 
-  m_window->pollEvent(event);
-  if (event.type == sf::Event::Closed)
+  m_window->GetEvent(event);
+  if (event.Type == sf::Event::Closed)
     return (CLOSE);
-  if (event.type == sf::Event::KeyPressed)
+  if (event.Type == sf::Event::KeyPressed)
     {
-      switch (event.key.code)
+      switch (event.Key.Code)
 	{
-	case sf::Keyboard::Left:
+	case sf::Key::Left:
 	  return (LEFT);
 
-	case sf::Keyboard::Right:
+	case sf::Key::Right:
 	  return (RIGHT);
+
+	case sf::Key::Up:
+	  return (UP);
+
+	case sf::Key::Down:
+	  return (DOWN);
 
 	default:
 	  return (NONE);
@@ -75,22 +70,17 @@ Event	Renderer::getEvent() const
 
 void	Renderer::clear() const
 {
-  m_window->clear(sf::Color(255, 255, 255));
+  m_window->Clear(sf::Color(255, 255, 255));
 }
 
 void	Renderer::update() const
 {
-  m_window->display();
+  m_window->Display();
 }
 
-void	Renderer::drawSnakeHead(int x, int y) const
+void	Renderer::drawSnake(int x, int y) const
 {
-  this->draw("snakeHead", x, y);
-}
-
-void	Renderer::drawSnakeBody(int x, int y) const
-{
-  this->draw("snakeBody", x, y);
+  this->draw("snake", x, y);
 }
 
 void	Renderer::drawFood(int x, int y) const
@@ -110,11 +100,10 @@ void	Renderer::drawGround(int x, int y) const
 
 void	Renderer::draw(const std::string& ressource, int x, int y) const
 {
-  sf::Sprite	sprite;
+  sf::Sprite	sprite(m_tiles.at(ressource));
 
-  sprite.setTexture(m_textures.at(ressource));
-  sprite.setPosition(x * TILESIZE, m_window->getSize().y - y * TILESIZE);
-  m_window->draw(sprite);
+  sprite.SetPosition(x * TILESIZE, m_window->GetHeight() - y * TILESIZE);
+  m_window->Draw(sprite);
 }
 
 /*

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:15:55 2014 guerot_a
-// Last update Sat Mar 29 20:30:06 2014 guerot_a
+// Last update Sat Mar 29 22:51:32 2014 guerot_a
 //
 
 #include <exception>
@@ -13,8 +13,10 @@
 #include "Game.hpp"
 #include "ManagerMenu.hpp"
 
-Game::Game(Renderer& renderer) :
-  m_renderer(renderer)
+Game::Game(Renderer& renderer, int width, int height) :
+  m_renderer(renderer),
+  m_width(width),
+  m_height(height)
 {
   m_manager = new ManagerMenu(*this);
   m_alive = true;

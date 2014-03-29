@@ -6,14 +6,14 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Thu Mar 27 13:43:08 2014 guerot_a
+// Last update Sat Mar 29 21:54:51 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
 #include <SFML/Graphics.hpp>
-#include "RenderAPI.hpp"
+#include "IRenderer.hpp"
 
 #define TILESIZE	32
 #define NB_TILEY	10
@@ -31,8 +31,7 @@ public:
   void	clear() const;
   void	update() const;
   void	drawGround(int x, int y) const;
-  void	drawSnakeHead(int x, int y) const;
-  void	drawSnakeBody(int x, int y) const;
+  void	drawSnake(int x, int y) const;
   void	drawFood(int x, int y) const;
   void	drawWall(int x, int y) const;
 
@@ -40,7 +39,7 @@ public:
 
 private:
   sf::RenderWindow*			m_window;
-  std::map<std::string, sf::Texture>	m_textures;
+  std::map<std::string, sf::Image>	m_tiles;
 };
 
 extern "C"  IRenderer* createRenderer();

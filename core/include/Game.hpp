@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:14:00 2014 guerot_a
-// Last update Sat Mar 29 20:30:16 2014 guerot_a
+// Last update Sat Mar 29 22:52:38 2014 guerot_a
 //
 
 #ifndef GAME_HPP
@@ -28,7 +28,7 @@ class Game
   class ManagerGamePauseOverlay;
 
 public:
-  Game(Renderer& renderer);
+  Game(Renderer& renderer, int width, int height);
   ~Game();
 
   void	run();
@@ -37,6 +37,8 @@ private:
   Renderer&	m_renderer;
   IManager*	m_manager;
   bool		m_alive;
+  int		m_width;
+  int		m_height;
 };
 
 #endif /* GAME_HPP */
