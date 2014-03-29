@@ -5,12 +5,13 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:59:15 2014 guerot_a
-// Last update Sat Mar 29 18:09:45 2014 guerot_a
+// Last update Sat Mar 29 20:16:20 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+#include <string>
 #include "RenderAPI.hpp"
 
 class Renderer
@@ -27,6 +28,7 @@ public:
 private:
   void*		m_libhandle;
   IRenderer*	m_renderer;
+  static int	m_nbInstance;
 };
 
-#ifndef RENDERER_HPP
+#endif /* RENDERER_HPP */

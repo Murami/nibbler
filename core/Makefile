@@ -5,16 +5,19 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Thu Mar 27 19:24:38 2014 guerot_a
+## Last update Sat Mar 29 20:32:03 2014 guerot_a
 ##
 
 ## FILES
 
 NAME		=	nibbler
 
-SRC		=	main		\
-			SnakeElm	\
-			Snake
+SRC		=	main			\
+			Game			\
+			ManagerGame		\
+			ManagerGamePauseOverlay	\
+			ManagerMenu		\
+			Renderer
 
 SRC_EXT		=	.cpp
 
@@ -43,7 +46,7 @@ LDFLAGS		=
 
 ## RUNS
 
-CC		=	g++
+CC		=	clang++
 RM		=	rm -rf
 MD		=	mkdir -p
 

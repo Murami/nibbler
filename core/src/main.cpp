@@ -5,19 +5,17 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Sat Mar 29 17:58:51 2014 guerot_a
+// Last update Sat Mar 29 20:05:31 2014 guerot_a
 //
 
 #include <iostream>
 #include <cstdlib>
-#include <dlfcn.h>
-#include "RenderAPI.hpp"
-
-#include "Vector2.hpp"
+#include "Game.hpp"
 
 void	nibbler(const std::string& libpath)
 {
-  Game		game(Renderer(libpath));
+  Renderer	renderer(libpath);
+  Game		game(renderer);
 
   game.run();
 }

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 15:42:52 2014 guerot_a
-// Last update Sat Mar 29 17:06:31 2014 guerot_a
+// Last update Sat Mar 29 20:27:02 2014 guerot_a
 //
 
 #ifndef IMANAGER_HPP
@@ -16,7 +16,7 @@
 class Game::IManager
 {
 public:
-  ~IManager() {}
+  virtual ~IManager() {}
 
   virtual void	run() = 0;
 };

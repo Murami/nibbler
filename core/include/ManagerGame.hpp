@@ -5,13 +5,14 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 16:11:26 2014 guerot_a
-// Last update Sat Mar 29 17:06:22 2014 guerot_a
+// Last update Sat Mar 29 20:18:44 2014 guerot_a
 //
 
 #ifndef MANAGER_GAME_HPP
 #define MANAGER_GAME_HPP
 
 #include "Game.hpp"
+#include "IManager.hpp"
 
 class Game::ManagerGame : public Game::IManager
 {
