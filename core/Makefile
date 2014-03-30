@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sat Mar 29 20:32:03 2014 guerot_a
+## Last update Sun Mar 30 22:41:01 2014 guerot_a
 ##
 
 ## FILES
@@ -16,8 +16,8 @@ SRC		=	main			\
 			Game			\
 			ManagerGame		\
 			ManagerGamePauseOverlay	\
-			ManagerMenu		\
-			Renderer
+			Renderer		\
+			Snake
 
 SRC_EXT		=	.cpp
 
@@ -46,7 +46,7 @@ LDFLAGS		=
 
 ## RUNS
 
-CC		=	clang++
+CC		=	g++ -fmax-errors=5
 RM		=	rm -rf
 MD		=	mkdir -p
 
@@ -113,7 +113,7 @@ dbg:	$(CNAME)
 $(CNAME):	$(COBJ)
 		@$(MD) $(DBIN)
 		@echo "Linkage : $(CNAME)"
-		$(CC) $(COBJ) -o $(CNAME) $(LDFLAGS)
+		@$(CC) $(COBJ) -o $(CNAME) $(LDFLAGS)
 
 $(COBJ):	$(MAKEOBJ)
 		@$(MD) $(DOBJ)

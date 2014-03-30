@@ -5,20 +5,20 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:15:55 2014 guerot_a
-// Last update Sat Mar 29 22:51:32 2014 guerot_a
+// Last update Sun Mar 30 22:15:54 2014 guerot_a
 //
 
 #include <exception>
 #include <stdexcept>
 #include "Game.hpp"
-#include "ManagerMenu.hpp"
+#include "ManagerGame.hpp"
 
 Game::Game(Renderer& renderer, int width, int height) :
   m_renderer(renderer),
   m_width(width),
   m_height(height)
 {
-  m_manager = new ManagerMenu(*this);
+  m_manager = new ManagerGame(*this);
   m_alive = true;
 }
 
@@ -29,10 +29,17 @@ Game::~Game()
 
 void	Game::run()
 {
+  API::Event	event;
+
   while (m_alive)
     {
-      if (!m_manager)
-	throw std::runtime_error("game manager is not setted");
-      m_manager->run();
+      while (m_renderer->getEvent(event))
+	{
+	  if (!m_manager)
+	    throw std::runtime_error("game manager is not setted");
+	  m_manager->handleEvent(event);
+	  m_manager->update();
+	  m_manager->draw();
+	}
     }
 }

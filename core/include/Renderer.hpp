@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:59:15 2014 guerot_a
-// Last update Sat Mar 29 22:37:05 2014 guerot_a
+// Last update Sun Mar 30 03:05:36 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -17,18 +17,18 @@
 class Renderer
 {
 public:
-  Renderer(const std::string& libpath);
+  Renderer(const std::string& libpath, int width, int height);
   Renderer(const Renderer& renderer);
   ~Renderer();
 
-  Renderer&	operator=(const Renderer& renderer);
+  Renderer&		operator=(const Renderer& renderer);
 
-  IRenderer*	operator->();
+  API::IRenderer*	operator->();
 
 private:
-  void*		m_libhandle;
-  IRenderer*	m_renderer;
-  static int	m_nbInstance;
+  void*			m_libhandle;
+  API::IRenderer*	m_renderer;
+  static int		m_nbInstance;
 };
 
 #endif /* RENDERER_HPP */

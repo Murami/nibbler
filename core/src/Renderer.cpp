@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 18:05:23 2014 guerot_a
-// Last update Sat Mar 29 20:37:54 2014 guerot_a
+// Last update Sun Mar 30 22:41:40 2014 guerot_a
 //
 
 #include <exception>
@@ -15,17 +15,17 @@
 
 int	Renderer::m_nbInstance = 0;
 
-Renderer::Renderer(const std::string& libpath)
+Renderer::Renderer(const std::string& libpath, int width, int height)
 {
-  IRenderer*	(*factory)();
+  API::IRenderer*	(*factory)(int, int);
 
   m_libhandle = dlopen(libpath.c_str(), RTLD_LAZY);
   if (!m_libhandle)
     throw std::runtime_error(dlerror());
-  factory = (IRenderer* (*)())(dlsym(m_libhandle, "rendererCreate"));
+  factory = (API::IRenderer* (*)(int, int))(dlsym(m_libhandle, "createRenderer"));
   if (!factory)
     throw std::runtime_error(dlerror());
-  m_renderer = factory();
+  m_renderer = factory(width, height);
   if (!m_renderer)
     throw std::runtime_error("creation of the renderer failed");
   m_nbInstance++;
@@ -55,7 +55,7 @@ Renderer&	Renderer::operator=(const Renderer& renderer)
   return (*this);
 }
 
-IRenderer*	Renderer::operator->()
+API::IRenderer*	Renderer::operator->()
 {
   return (m_renderer);
 }

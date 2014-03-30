@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sat Mar 29 21:54:51 2014 guerot_a
+// Last update Sun Mar 30 01:53:30 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -19,29 +19,38 @@
 #define NB_TILEY	10
 #define NB_TILEX	10
 
-class Renderer : public IRenderer
+namespace API
 {
-public:
-  Renderer();
-  ~Renderer();
+  class Renderer : public IRenderer
+  {
+  public:
+    Renderer(int x, int y);
+    ~Renderer();
 
-  Event	getEvent() const;
-  void	close();
-  bool	isOpen() const;
-  void	clear() const;
-  void	update() const;
-  void	drawGround(int x, int y) const;
-  void	drawSnake(int x, int y) const;
-  void	drawFood(int x, int y) const;
-  void	drawWall(int x, int y) const;
+    bool	getEvent(Event& event) const;
+    void	close();
+    bool	isOpen() const;
+    void	clear() const;
+    void	update() const;
 
-  void	draw(const std::string& ressource, int x, int y) const;
+    //menu draws
+    void	drawMenuPlay(bool selected) const;
+    void	drawMenuQuit(bool selected) const;
 
-private:
-  sf::RenderWindow*			m_window;
-  std::map<std::string, sf::Image>	m_tiles;
+    //game draws
+    void	drawGround(int x, int y) const;
+    void	drawSnake(int x, int y) const;
+    void	drawFood(int x, int y) const;
+    void	drawWall(int x, int y) const;
+
+    void	draw(const std::string& ressource, int x, int y) const;
+
+  private:
+    mutable sf::RenderWindow		m_window;
+    std::map<std::string, sf::Image>	m_tiles;
+  };
 };
 
-extern "C"  IRenderer* createRenderer();
+extern "C"  API::IRenderer* createRenderer(int, int);
 
 #endif /* RENDERER_HPP */
