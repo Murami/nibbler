@@ -5,11 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-<<<<<<< HEAD
-// Last update Tue Apr  1 18:59:45 2014 pinon
-=======
-// Last update Tue Apr  1 18:34:19 2014 guerot_a
->>>>>>> b05f3cee8574d4637a1beb3f336e7f98385be267
+// Last update Tue Apr  1 19:10:40 2014 guerot_a
 //
 
 #include <exception>
