@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 20:10:15 2014 Desabre Quentin
+// Last update Tue Apr  1 20:34:10 2014 pinon
 //
 
 #include <iostream>
@@ -122,6 +122,6 @@ void	Snake::draw(const Renderer& renderer) const
 
   for (it = m_snakeLimbs.begin(); it != m_snakeLimbs.end(); it++)
     {
-      renderer->drawSnake((*it).x, (*it).y);
+      renderer->draw("apple", (*it).x, (*it).y, API::Right);
     }
 }
