@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:02:54 2014 guerot_a
-// Last update Tue Apr  1 19:02:36 2014 guerot_a
+// Last update Tue Apr  1 19:46:16 2014 guerot_a
 //
 
 #ifndef IOBJECT_HPP
@@ -17,12 +17,15 @@
 class IObject
 {
 public:
+  virtual ~IObject() {}
+
   virtual void use(const Snake& snake) = 0;
   virtual bool obsolete() const = 0;
 
-  virtual IObject*	clone() const;
+  virtual IObject*	clone(int x, int y) const = 0;
 
-  virtual void		draw(const Renderer& renderer) const;
+  virtual void		draw(const Renderer& renderer) const = 0;
+  virtual bool		collide(int x, int y) const = 0;
 };
 
 #endif /* IOBJECT_HPP */
