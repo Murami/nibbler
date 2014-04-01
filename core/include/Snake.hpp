@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Tue Apr  1 16:36:40 2014 guerot_a
+// Last update Tue Apr  1 17:53:34 2014 guerot_a
 //
 
 #ifndef SNAKE_HPP
@@ -17,6 +17,7 @@
 #include "Timer.hpp"
 
 #define SNAKE_UPDATE_PERIOD	(100.f)
+#define SNAKE_TURN_PERIOD	(20.f)
 
 class Snake
 {

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 16:47:42 2014 guerot_a
+// Last update Tue Apr  1 17:56:36 2014 guerot_a
 //
 
 #include <iostream>
@@ -39,22 +39,18 @@ void	Snake::disableBoost()
 
 void	Snake::turnRight()
 {
-  if (!m_alive || m_haveTurned)
+  if (!m_alive)
     return;
   m_direction(m_direction.y, -m_direction.x);
   m_haveTurned = true;
-  moveSnake();
 }
 
 void	Snake::turnLeft()
 {
   if (!m_alive)
     return;
-  if (m_haveTurned)
-    return;
   m_direction(-m_direction.y, m_direction.x);
-  m_haveTurned = true;
-  moveSnake();
+  m_haveTurned = false;
 }
 
 void	Snake::update()
@@ -67,6 +63,11 @@ void	Snake::update()
   if (nbMove)
     {
       m_timer.reset();
+      m_haveTurned = false;
+    }
+  if (m_haveTurned)
+    {
+      nbMove = 1;
       m_haveTurned = false;
     }
   while (nbMove)
