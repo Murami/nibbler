@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Tue Apr  1 19:56:40 2014 guerot_a
+// Last update Tue Apr  1 21:18:44 2014 guerot_a
 //
 
 #include "NormalFood.hpp"
@@ -14,7 +14,7 @@
 
 Game::ManagerGame::ManagerGame(Game& game) :
   m_game(game),
-  m_snake(game.m_width, game.m_height)
+  m_snake(game.m_width, game.m_height, m_objectList)
 {
   m_objectList.push_back(new NormalFood(10, 10));
 }
@@ -70,7 +70,19 @@ void	Game::ManagerGame::handleEvent(const API::Event& event)
 
 void	Game::ManagerGame::update()
 {
+  std::vector<IObject*>::iterator	it;
+
   m_snake.update();
+  //erase obsolete objects
+  for (it = m_objectList.begin(); it < m_objectList.end(); it++)
+    {
+      if((*it)->obsolete())
+	{
+	  delete (*it);
+	  it = m_objectList.erase(it);
+	  it--;
+	}
+    }
 }
 
 void	Game::ManagerGame::draw() const

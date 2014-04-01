@@ -5,23 +5,26 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Tue Apr  1 19:17:59 2014 Desabre Quentin
+// Last update Tue Apr  1 21:16:46 2014 guerot_a
 //
 
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
 #include <list>
+#include <vector>
 #include "Renderer.hpp"
 #include "Vector2.hpp"
 #include "Timer.hpp"
+
+class IObject;
 
 #define SNAKE_UPDATE_PERIOD	(16.f)
 
 class Snake
 {
 public:
-  Snake(int, int);
+  Snake(int, int, std::vector<IObject*>& objectList);
   ~Snake();
 
   void	enableBoost();
@@ -32,7 +35,7 @@ public:
 
   bool	collideMap();
   bool	collideSnake();
-  bool	collideObject();
+  void	collideObject();
 
   void	update();
   void	draw(const Renderer& renderer) const;
@@ -48,7 +51,7 @@ private:
   bool				m_boost;
   bool				m_alive;
   Timer				m_timer;
-  bool				m_haveTurned;
+  std::vector<IObject*>&	m_objectList;
 };
 
 #endif /* SNAKE_HPP */

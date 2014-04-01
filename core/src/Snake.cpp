@@ -5,16 +5,17 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 20:10:15 2014 Desabre Quentin
+// Last update Tue Apr  1 21:16:38 2014 guerot_a
 //
 
 #include <iostream>
 #include "Snake.hpp"
+#include "IObject.hpp"
 
-Snake::Snake(int width, int height) :
+Snake::Snake(int width, int height, std::vector<IObject*>& objectList) :
   m_direction(1, 0),
   m_alive(true),
-  m_haveTurned(false)
+  m_objectList(objectList)
 {
   m_size(width, height);
   m_snakeLimbs.push_back(Vector2i(6, 0));
@@ -99,8 +100,17 @@ bool	Snake::collideSnake()
 
 }
 
-bool	Snake::collideObject()
+void	Snake::collideObject()
 {
+  std::vector<IObject*>::iterator	it;
+
+  for (it = m_objectList.begin(); it < m_objectList.end(); it++)
+    {
+      if((*it)->collide(m_snakeLimbs.front().x, m_snakeLimbs.front().y))
+	{
+	  (*it)->use(*this);
+	}
+    }
 
 }
 
@@ -114,6 +124,7 @@ void	Snake::moveSnake()
       m_snakeLimbs.push_front(Vector2i(m_snakeLimbs.front().x + m_direction.x,
 				       m_snakeLimbs.front().y + m_direction.y));
     }
+  collideObject();
 }
 
 void	Snake::draw(const Renderer& renderer) const
