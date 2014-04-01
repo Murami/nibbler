@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 18:05:23 2014 guerot_a
-// Last update Sun Mar 30 22:41:40 2014 guerot_a
+// Last update Tue Apr  1 15:09:24 2014 Desabre Quentin
 //
 
 #include <exception>
@@ -56,6 +56,11 @@ Renderer&	Renderer::operator=(const Renderer& renderer)
 }
 
 API::IRenderer*	Renderer::operator->()
+{
+  return (m_renderer);
+}
+
+API::IRenderer*	Renderer::operator->() const
 {
   return (m_renderer);
 }

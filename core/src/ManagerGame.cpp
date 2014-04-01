@@ -5,14 +5,15 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Sun Mar 30 22:40:24 2014 guerot_a
+// Last update Tue Apr  1 14:53:21 2014 Desabre Quentin
 //
 
 #include "ManagerGame.hpp"
 #include "ManagerGamePauseOverlay.hpp"
 
 Game::ManagerGame::ManagerGame(Game& game) :
-  m_game(game)
+  m_game(game),
+  m_snake(game.m_width, game.m_height)
 {
 }
 
