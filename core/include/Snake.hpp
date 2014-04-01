@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Tue Apr  1 18:36:08 2014 guerot_a
+// Last update Tue Apr  1 19:17:59 2014 Desabre Quentin
 //
 
 #ifndef SNAKE_HPP
@@ -29,6 +29,10 @@ public:
 
   void	turnRight();
   void	turnLeft();
+
+  bool	collideMap();
+  bool	collideSnake();
+  bool	collideObject();
 
   void	update();
   void	draw(const Renderer& renderer) const;
