@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Tue Apr  1 14:53:21 2014 Desabre Quentin
+// Last update Tue Apr  1 15:28:04 2014 guerot_a
 //
 
 #include "ManagerGame.hpp"

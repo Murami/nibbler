@@ -5,13 +5,16 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 15:08:05 2014 Desabre Quentin
+// Last update Tue Apr  1 16:47:42 2014 guerot_a
 //
 
+#include <iostream>
 #include "Snake.hpp"
 
 Snake::Snake(int width, int height) :
-  m_direction(1, 0)
+  m_direction(1, 0),
+  m_alive(true),
+  m_haveTurned(false)
 {
   m_size(width, height);
   m_snakeLimbs.push_back(Vector2i(0, 0));
@@ -36,21 +39,53 @@ void	Snake::disableBoost()
 
 void	Snake::turnRight()
 {
+  if (!m_alive || m_haveTurned)
+    return;
   m_direction(m_direction.y, -m_direction.x);
+  m_haveTurned = true;
+  moveSnake();
 }
 
 void	Snake::turnLeft()
 {
+  if (!m_alive)
+    return;
+  if (m_haveTurned)
+    return;
   m_direction(-m_direction.y, m_direction.x);
+  m_haveTurned = true;
+  moveSnake();
 }
 
 void	Snake::update()
 {
+  int	nbMove;
+
+  if (!m_alive)
+    return;
+  nbMove = m_timer.getElapsedTime() / SNAKE_UPDATE_PERIOD;
+  if (nbMove)
+    {
+      m_timer.reset();
+      m_haveTurned = false;
+    }
+  while (nbMove)
+    {
+      moveSnake();
+      nbMove--;
+    }
+}
+
+void	Snake::moveSnake()
+{
   if (m_snakeLimbs.front().x + m_direction.x < 0 ||
       m_snakeLimbs.front().x + m_direction.x >= m_size.x ||
       m_snakeLimbs.front().y + m_direction.y < 0 ||
-      m_snakeLimbs.front().y + m_direction.x >= m_size.y)
-    m_alive = false;
+      m_snakeLimbs.front().y + m_direction.x >= m_size.y - 1)
+    {
+      m_alive = false;
+      std::cout << "die" << std::endl;
+    }
   else
     {
       m_snakeLimbs.pop_back();

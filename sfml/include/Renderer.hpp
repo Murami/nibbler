@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sun Mar 30 01:53:30 2014 guerot_a
+// Last update Tue Apr  1 15:43:13 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -32,10 +32,6 @@ namespace API
     bool	isOpen() const;
     void	clear() const;
     void	update() const;
-
-    //menu draws
-    void	drawMenuPlay(bool selected) const;
-    void	drawMenuQuit(bool selected) const;
 
     //game draws
     void	drawGround(int x, int y) const;
