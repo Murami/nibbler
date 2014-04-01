@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Tue Apr  1 15:12:36 2014 guerot_a
+// Last update Tue Apr  1 18:59:45 2014 pinon
 //
 
 #include <exception>
@@ -21,6 +21,10 @@ namespace API
   {
     if (width > 200 || height > 200)
       throw std::runtime_error("cannot create a windows with a size higher than 200x200");
+    m_tiles["head"].LoadFromFile("./sfml/assets/sprites/head.png");
+    m_tiles["core"].LoadFromFile("./sfml/assets/sprites/core.png");
+    m_tiles["corner"].LoadFromFile("./sfml/assets/sprites/corner.png");
+    m_tiles["tail"].LoadFromFile("./sfml/assets/sprites/tail.png");
 
     m_tiles["wall"].Create(TILESIZE, TILESIZE, sf::Color(255, 0, 0));
     m_tiles["ground"].Create(TILESIZE, TILESIZE, sf::Color(200, 200, 200));
