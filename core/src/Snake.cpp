@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 16:47:42 2014 guerot_a
+// Last update Tue Apr  1 17:47:40 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -81,7 +81,7 @@ void	Snake::moveSnake()
   if (m_snakeLimbs.front().x + m_direction.x < 0 ||
       m_snakeLimbs.front().x + m_direction.x >= m_size.x ||
       m_snakeLimbs.front().y + m_direction.y < 0 ||
-      m_snakeLimbs.front().y + m_direction.x >= m_size.y - 1)
+      m_snakeLimbs.front().y + m_direction.y >= m_size.y)
     {
       m_alive = false;
       std::cout << "die" << std::endl;
