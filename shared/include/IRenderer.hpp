@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 21:51:22 2014 guerot_a
-// Last update Sun Mar 30 03:00:50 2014 guerot_a
+// Last update Tue Apr  1 16:21:21 2014 guerot_a
 //
 
 #ifndef IRENDERER_HPP
@@ -21,6 +21,7 @@ namespace API
   {
     enum	Code
       {
+	None,
 	Left,
 	Right,
 	Up,
@@ -37,6 +38,7 @@ namespace API
 
     enum	EventType
       {
+	None,
 	KeyPressed,
 	KeyReleased,
 	Closed
@@ -61,19 +63,11 @@ namespace API
     virtual void	clear() const = 0;
     virtual void	update() const = 0;
 
-    //menu draws
-    virtual void	drawMenuPlay(bool selected) const = 0;
-    virtual void	drawMenuQuit(bool selected) const = 0;
-
     //game draws
     virtual void	drawGround(int x, int y) const = 0;
     virtual void	drawSnake(int x, int y) const = 0;
     virtual void	drawFood(int x, int y) const = 0;
     virtual void	drawWall(int x, int y) const = 0;
-
-    //ui draws
-
-    //menu overlay draws
   };
 };
 

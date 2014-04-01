@@ -5,7 +5,11 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
+<<<<<<< HEAD
 // Last update Tue Apr  1 18:59:45 2014 pinon
+=======
+// Last update Tue Apr  1 18:34:19 2014 guerot_a
+>>>>>>> b05f3cee8574d4637a1beb3f336e7f98385be267
 //
 
 #include <exception>
@@ -26,9 +30,11 @@ namespace API
     m_tiles["corner"].LoadFromFile("./sfml/assets/sprites/corner.png");
     m_tiles["tail"].LoadFromFile("./sfml/assets/sprites/tail.png");
 
+    m_window.SetFramerateLimit(0);
+    m_window.EnableKeyRepeat(false);
     m_tiles["wall"].Create(TILESIZE, TILESIZE, sf::Color(255, 0, 0));
     m_tiles["ground"].Create(TILESIZE, TILESIZE, sf::Color(200, 200, 200));
-    m_tiles["snake"].Create(TILESIZE, TILESIZE, sf::Color(0, 255, 255));
+    m_tiles["snake"].Create(TILESIZE-2, TILESIZE-2, sf::Color(0, 255, 255));
     m_tiles["food"].Create(TILESIZE, TILESIZE, sf::Color(0, 0, 255));
   }
 
@@ -52,7 +58,8 @@ namespace API
 
     if (!m_window.GetEvent(event))
       {
-	std::cout << "no event" << std::endl;
+	eventRcv.type = Event::None;
+	eventRcv.key = Key::None;
 	return (false);
       }
     switch (event.Type)
@@ -122,20 +129,6 @@ namespace API
   }
 
   /*
-  ** Menu draws
-  */
-
-  void	Renderer::drawMenuPlay(bool selected) const
-  {
-    (void) selected;
-  }
-
-  void	Renderer::drawMenuQuit(bool selected) const
-  {
-    (void) selected;
-  }
-
-  /*
   ** Game draws
   */
 
@@ -163,7 +156,7 @@ namespace API
   {
     sf::Sprite	sprite(m_tiles.at(ressource));
 
-    sprite.SetPosition(x * TILESIZE, m_window.GetHeight() - y * TILESIZE);
+    sprite.SetPosition(x * TILESIZE , m_window.GetHeight() - (y + 1) * TILESIZE);
     m_window.Draw(sprite);
   }
 };

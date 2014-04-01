@@ -5,11 +5,12 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:15:55 2014 guerot_a
-// Last update Sun Mar 30 22:15:54 2014 guerot_a
+// Last update Tue Apr  1 18:37:56 2014 guerot_a
 //
 
 #include <exception>
 #include <stdexcept>
+#include <iostream>
 #include "Game.hpp"
 #include "ManagerGame.hpp"
 
@@ -34,12 +35,12 @@ void	Game::run()
   while (m_alive)
     {
       while (m_renderer->getEvent(event))
-	{
-	  if (!m_manager)
-	    throw std::runtime_error("game manager is not setted");
-	  m_manager->handleEvent(event);
-	  m_manager->update();
-	  m_manager->draw();
-	}
+      	{
+      	  if (!m_manager)
+      	    throw std::runtime_error("game manager is not setted");
+      	  m_manager->handleEvent(event);
+      	}
+      m_manager->update();
+      m_manager->draw();
     }
 }
