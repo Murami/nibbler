@@ -5,31 +5,25 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Fri Mar 28 14:27:44 2014 guerot_a
+// Last update Tue Apr  1 14:55:36 2014 guerot_a
 //
 
 #include "NormalFood.hpp"
 #include "Snake.hpp"
 
-namespace Game
+NormalFood::NormalFood()
+  : m_used(true)
 {
-  NormalFood::NormalFood()
-    : m_used(true);
-  {
-  }
+}
 
-  NormalFood::~NormalFood()
-  {
-  }
+NormalFood::~NormalFood()
+{
+}
 
-  void	NormalFood::use(const Snake& snake)
-  {
-    snake.addElm();
-    m_used = true;
-  }
+void	NormalFood::use(const Snake& snake)
+{
+}
 
-  bool	NormalFood::obosolete() const
-  {
-    return (!m_used);
-  }
-};
+bool	NormalFood::obosolete() const
+{
+}

@@ -5,13 +5,14 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:02:54 2014 guerot_a
-// Last update Fri Mar 28 19:17:10 2014 guerot_a
+// Last update Tue Apr  1 15:03:34 2014 guerot_a
 //
 
 #ifndef IOBJECT_HPP
 #define IOBJECT_HPP
 
-class Snake;
+#include "Snake.hpp"
+#include "Renderer.hpp"
 
 class IObject
 {
@@ -20,6 +21,8 @@ public:
   virtual bool obosolete() const = 0;
 
   virtual IObject*	clone() const;
+
+  virtual void		draw(const Renderer& renderer) const;
 };
 
 #endif /* IOBJECT_HPP */

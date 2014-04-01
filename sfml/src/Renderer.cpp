@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Mar 30 03:04:35 2014 guerot_a
+// Last update Tue Apr  1 15:12:36 2014 guerot_a
 //
 
 #include <exception>
@@ -47,7 +47,10 @@ namespace API
     sf::Event	event;
 
     if (!m_window.GetEvent(event))
-      return (false);
+      {
+	std::cout << "no event" << std::endl;
+	return (false);
+      }
     switch (event.Type)
       {
       case sf::Event::Closed:
