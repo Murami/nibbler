@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Tue Apr  1 15:28:04 2014 guerot_a
+// Last update Tue Apr  1 18:38:38 2014 guerot_a
 //
 
 #include "ManagerGame.hpp"
@@ -44,7 +44,8 @@ void	Game::ManagerGame::handleEvent(const API::Event& event)
 	  break;
 
 	case API::Key::Escape:
-	  m_game.m_manager = new ManagerGamePauseOverlay(m_game, this);
+	  // m_game.m_manager = new ManagerGamePauseOverlay(m_game, this);
+	  m_game.m_alive = false;
 	  break;
 
 	default:

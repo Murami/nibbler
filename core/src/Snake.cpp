@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Tue Apr  1 17:59:04 2014 guerot_a
+// Last update Tue Apr  1 18:59:46 2014 guerot_a
 //
 
 #include <iostream>
@@ -42,7 +42,6 @@ void	Snake::turnRight()
   if (!m_alive)
     return;
   m_direction(m_direction.y, -m_direction.x);
-  m_haveTurned = true;
 }
 
 void	Snake::turnLeft()
@@ -50,7 +49,6 @@ void	Snake::turnLeft()
   if (!m_alive)
     return;
   m_direction(-m_direction.y, m_direction.x);
-  m_haveTurned = false;
 }
 
 void	Snake::update()
@@ -63,12 +61,6 @@ void	Snake::update()
   if (nbMove)
     {
       m_timer.reset();
-      m_haveTurned = false;
-    }
-  if (m_haveTurned)
-    {
-      nbMove = 1;
-      m_haveTurned = false;
     }
   while (nbMove)
     {
@@ -85,7 +77,6 @@ void	Snake::moveSnake()
       m_snakeLimbs.front().y + m_direction.y >= m_size.y)
     {
       m_alive = false;
-      std::cout << "die" << std::endl;
     }
   else
     {
