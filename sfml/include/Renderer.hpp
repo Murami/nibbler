@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Tue Apr  1 15:43:13 2014 guerot_a
+// Last update Tue Apr  1 19:53:29 2014 pinon
 //
 
 #ifndef RENDERER_HPP
@@ -34,12 +34,9 @@ namespace API
     void	update() const;
 
     //game draws
-    void	drawGround(int x, int y) const;
-    void	drawSnake(int x, int y) const;
-    void	drawFood(int x, int y) const;
-    void	drawWall(int x, int y) const;
 
-    void	draw(const std::string& ressource, int x, int y) const;
+    void	draw(const std::string& ressource, int x, int y,
+		     Orientation ori) const;
 
   private:
     mutable sf::RenderWindow		m_window;

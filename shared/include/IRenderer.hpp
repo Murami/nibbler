@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 21:51:22 2014 guerot_a
-// Last update Tue Apr  1 16:21:21 2014 guerot_a
+// Last update Tue Apr  1 19:53:33 2014 pinon
 //
 
 #ifndef IRENDERER_HPP
@@ -17,6 +17,14 @@
 
 namespace API
 {
+  enum		Orientation
+    {
+      Right = 1,
+      Up,
+      Left,
+      Down
+    };
+
   namespace Key
   {
     enum	Code
@@ -64,10 +72,9 @@ namespace API
     virtual void	update() const = 0;
 
     //game draws
-    virtual void	drawGround(int x, int y) const = 0;
-    virtual void	drawSnake(int x, int y) const = 0;
-    virtual void	drawFood(int x, int y) const = 0;
-    virtual void	drawWall(int x, int y) const = 0;
+
+    virtual void        draw(const std::string& ressource, int x, int y,
+			     Orientation ori) const = 0;
   };
 };
 
