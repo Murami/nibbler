@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Mar 30 22:41:01 2014 guerot_a
+## Last update Tue Apr  1 15:14:05 2014 guerot_a
 ##
 
 ## FILES
@@ -17,7 +17,7 @@ SRC		=	main			\
 			ManagerGame		\
 			ManagerGamePauseOverlay	\
 			Renderer		\
-			Snake
+			Snake			
 
 SRC_EXT		=	.cpp
 

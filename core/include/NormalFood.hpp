@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:06:52 2014 guerot_a
-// Last update Fri Mar 28 19:17:29 2014 guerot_a
+// Last update Tue Apr  1 15:01:10 2014 guerot_a
 //
 
 #ifndef NORMAL_FOOD_HPP
@@ -21,6 +21,8 @@ public:
 
   void	use(const Snake& snake);
   bool	obosolete() const;
+
+  void	draw(const Renderer& renderer) const;
 
 private:
   bool	m_used;
