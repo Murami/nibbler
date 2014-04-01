@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 16:11:26 2014 guerot_a
-// Last update Tue Apr  1 19:30:00 2014 guerot_a
+// Last update Tue Apr  1 22:47:37 2014 guerot_a
 //
 
 #ifndef MANAGER_GAME_HPP
@@ -16,6 +16,8 @@
 #include "Game.hpp"
 #include "IManager.hpp"
 #include "Snake.hpp"
+#include "ObjectFactory.hpp"
+#include "MapObject.hpp"
 
 class Game::ManagerGame : public Game::IManager
 {
@@ -30,9 +32,7 @@ public:
 private:
   Game&			m_game;
   Snake			m_snake;
-  int			m_mapWidth;
-  int			m_mapHeight;
-  std::vector<IObject*>	m_objectList;
+  MapObject		m_mapObject;
 };
 
 #endif /* MANAGER_GAME_HPP */

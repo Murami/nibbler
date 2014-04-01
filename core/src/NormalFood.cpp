@@ -5,11 +5,16 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Tue Apr  1 19:57:27 2014 guerot_a
+// Last update Tue Apr  1 22:43:11 2014 guerot_a
 //
 
+#include <iostream>
 #include "NormalFood.hpp"
 #include "Snake.hpp"
+
+NormalFood::NormalFood()
+{
+}
 
 NormalFood::NormalFood(int x, int y)
   : m_used(false),
@@ -22,10 +27,10 @@ NormalFood::~NormalFood()
 {
 }
 
-void	NormalFood::use(const Snake& snake)
+void	NormalFood::use(const Snake& snake) const
 {
   // snake.addElm();
-  m_used = false;
+  m_used = true;
 }
 
 bool	NormalFood::obsolete() const
