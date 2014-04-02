@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Tue Apr  1 19:53:29 2014 pinon
+// Last update Wed Apr  2 01:58:39 2014 pinon
 //
 
 #ifndef RENDERER_HPP
@@ -15,7 +15,7 @@
 #include <SFML/Graphics.hpp>
 #include "IRenderer.hpp"
 
-#define TILESIZE	32
+#define TILESIZE	50
 #define NB_TILEY	10
 #define NB_TILEX	10
 
@@ -36,7 +36,7 @@ namespace API
     //game draws
 
     void	draw(const std::string& ressource, int x, int y,
-		     Orientation ori) const;
+		     int rotation) const;
 
   private:
     mutable sf::RenderWindow		m_window;

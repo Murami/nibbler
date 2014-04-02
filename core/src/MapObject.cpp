@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Tue Apr  1 23:25:35 2014 guerot_a
+// Last update Wed Apr  2 00:33:10 2014 pinon
 //
 
 #include <iostream>
@@ -78,7 +78,7 @@ bool	MapObject::collideObject(int x, int y)
   return (false);
 }
 
-void	MapObject::useObject(int x, int y, const Snake& snake) const
+void	MapObject::useObject(int x, int y, Snake& snake) const
 {
  std::vector<IObject*>::const_iterator	it;
 

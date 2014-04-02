@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:06:52 2014 guerot_a
-// Last update Tue Apr  1 22:42:48 2014 guerot_a
+// Last update Wed Apr  2 00:19:59 2014 pinon
 //
 
 #ifndef NORMAL_FOOD_HPP
@@ -20,7 +20,7 @@ public:
   NormalFood(int x, int y);
   ~NormalFood();
 
-  void	use(const Snake& snake) const;
+  void	use(Snake& snake) const;
   bool	obsolete() const;
 
   void	draw(const Renderer& renderer) const;

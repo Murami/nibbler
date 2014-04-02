@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:02:54 2014 guerot_a
-// Last update Tue Apr  1 22:42:24 2014 guerot_a
+// Last update Wed Apr  2 00:26:10 2014 pinon
 //
 
 #ifndef IOBJECT_HPP
@@ -19,7 +19,7 @@ class IObject
 public:
   virtual ~IObject() {}
 
-  virtual void use(const Snake& snake) const = 0;
+  virtual void use(Snake& snake) const = 0;
   virtual bool obsolete() const = 0;
 
   virtual IObject*	clone(int x, int y) const = 0;
