@@ -5,13 +5,16 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Wed Apr  2 10:01:41 2014 guerot_a
-// Last update Wed Apr  2 10:41:54 2014 guerot_a
+// Last update Wed Apr  2 11:13:42 2014 guerot_a
 //
 
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
 #include "ICommand.hpp"
+
+class Game;
+class Snake;
 
 class Game_Left_Pressed : public ICommand
 {
@@ -55,14 +58,14 @@ private:
 class Game_Space_Released : public ICommand
 {
 public:
-  Game_Space_Released(Game& game);
+  Game_Space_Released(Snake& snake);
   ~Game_Space_Released() {};
 
   void	run() const;
   bool	isActive(const API::Event& event) const;
 
 private:
-  Game&		m_game;
+  Snake&	m_snake;
 };
 
 class Game_Escape_Pressed : public ICommand

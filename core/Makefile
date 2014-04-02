@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Tue Apr  1 22:57:40 2014 guerot_a
+## Last update Wed Apr  2 11:00:05 2014 guerot_a
 ##
 
 ## FILES
@@ -21,7 +21,8 @@ SRC		=	main			\
 			Timer			\
 			NormalFood		\
 			ObjectFactory		\
-			MapObject
+			MapObject		\
+			Command
 
 SRC_EXT		=	.cpp
 

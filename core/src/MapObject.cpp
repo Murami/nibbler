@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Wed Apr  2 09:24:58 2014 guerot_a
+// Last update Wed Apr  2 11:12:42 2014 guerot_a
 //
 
 #include <iostream>
@@ -22,8 +22,6 @@ MapObject::MapObject()
   srand(time(NULL));
 
   m_objectFactory.learn("NormalFood", new NormalFood);
-
-  this->addObjectRandom("NormalFood");
 }
 
 MapObject::~MapObject()
@@ -52,17 +50,17 @@ void	MapObject::update(int width, int height, const Snake& snake)
   //create an object at random position at a given frequency
   if (m_objectCreationTimer.getElapsedTime() > OBJECT_CREATION_PERIOD)
     {
-      this->addObjectRandom();
+      this->addObjectRandom(width, height, snake);
       m_objectCreationTimer.reset();
     }
 
-  //create a food if there are not one on the map
+  //create a food if there are no one on the map
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
     {
       if ((*it)->getType() == "NormalFood")
 	return;
     }
-  this->addObjectRandom("NormalFood");
+  this->addObjectRandom("NormalFood", width, height, snake);
 }
 
 void	MapObject::draw(const Renderer& renderer) const
@@ -83,7 +81,7 @@ bool	MapObject::collideObject(int x, int y)
   return (false);
 }
 
-void	MapObject::useObject(int x, int y, const Snake& snake) const
+void	MapObject::useObject(int x, int y, Snake& snake) const
 {
   std::vector<IObject*>::const_iterator	it;
 
@@ -97,7 +95,7 @@ void	MapObject::addObject(IObject* object)
   m_objectList.push_back(object);
 }
 
-void	MapObject::addObjectRandom(const std::string& objectType)
+void	MapObject::addObjectRandom(const std::string& objectType, int width, int height, const Snake& snake)
 {
   Vector2i	vect;
 
@@ -107,7 +105,7 @@ void	MapObject::addObjectRandom(const std::string& objectType)
   addObject(m_objectFactory.create(objectType, vect.x, vect.y));
 }
 
-void	MapObject::addObjectRandom()
+void	MapObject::addObjectRandom(int width, int height, const Snake& snake)
 {
   Vector2i	vect;
 

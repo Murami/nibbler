@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:02:07 2014 guerot_a
-// Last update Wed Apr  2 09:19:36 2014 guerot_a
+// Last update Wed Apr  2 11:13:10 2014 guerot_a
 //
 
 #ifndef MAP_OBJECT_HPP
@@ -29,11 +29,11 @@ public:
   void	draw(const Renderer& renderer) const;
 
   bool	collideObject(int x, int y);
-  void	useObject(int x, int y, const Snake& snake) const;
+  void	useObject(int x, int y, Snake& snake) const;
 
   void	addObject(IObject* object);
-  void	addObjectRandom();
-  void	addObjectRandom(const std::string& objectType);
+  void	addObjectRandom(int width, int height, const Snake& snake);
+  void	addObjectRandom(const std::string& objectType, int width, int height, const Snake& Snake);
 
 private:
   std::vector<IObject*>	m_objectList;

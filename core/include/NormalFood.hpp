@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:06:52 2014 guerot_a
-// Last update Wed Apr  2 09:08:55 2014 guerot_a
+// Last update Wed Apr  2 11:05:23 2014 guerot_a
 //
 
 #ifndef NORMAL_FOOD_HPP
@@ -20,9 +20,10 @@ public:
   NormalFood(int x, int y);
   ~NormalFood();
 
+
   const std::string&	getType() const;
 
-  void	use(const Snake& snake) const;
+  void	use(Snake& snake) const;
   bool	obsolete() const;
 
   void	draw(const Renderer& renderer) const;
@@ -32,6 +33,7 @@ public:
 
 private:
   mutable bool	m_used;
+  std::string	m_type;
   int		m_x;
   int		m_y;
 };

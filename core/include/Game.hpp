@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:14:00 2014 guerot_a
-// Last update Sat Mar 29 22:52:38 2014 guerot_a
+// Last update Wed Apr  2 11:16:08 2014 guerot_a
 //
 
 #ifndef GAME_HPP
@@ -32,6 +32,8 @@ public:
   ~Game();
 
   void	run();
+
+  void	close();
 
 private:
   Renderer&	m_renderer;

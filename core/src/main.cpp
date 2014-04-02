@@ -5,11 +5,12 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:09:53 2014
-// Last update Sat Mar 29 23:31:25 2014 guerot_a
+// Last update Wed Apr  2 01:07:01 2014 pinon
 //
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include "Game.hpp"
 
 void	nibbler(const std::string& libpath, int width, int height)
@@ -22,6 +23,7 @@ void	nibbler(const std::string& libpath, int width, int height)
 
 int	main(int argc, char** argv)
 {
+  srand(time(NULL));
   try
     {
       if (argc != 4)

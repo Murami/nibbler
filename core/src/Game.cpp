@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:15:55 2014 guerot_a
-// Last update Tue Apr  1 18:37:56 2014 guerot_a
+// Last update Wed Apr  2 11:16:46 2014 guerot_a
 //
 
 #include <exception>
@@ -43,4 +43,9 @@ void	Game::run()
       m_manager->update();
       m_manager->draw();
     }
+}
+
+void	Game::close()
+{
+  m_alive = false;
 }

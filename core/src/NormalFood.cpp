@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Wed Apr  2 09:09:58 2014 guerot_a
+// Last update Wed Apr  2 11:05:35 2014 guerot_a
 //
 
 #include <iostream>
@@ -14,6 +14,7 @@
 
 NormalFood::NormalFood()
 {
+  m_type = "NormalFood";
 }
 
 NormalFood::NormalFood(int x, int y)
@@ -27,14 +28,14 @@ NormalFood::~NormalFood()
 {
 }
 
-const std::string&	getType() const
+const std::string&	NormalFood::getType() const
 {
-  return ("NormalFood");
+  return (m_type);
 }
 
-void	NormalFood::use(const Snake& snake) const
+void	NormalFood::use(Snake& snake) const
 {
-  // snake.addElm();
+  snake.addElem();
   m_used = true;
 }
 
@@ -45,7 +46,7 @@ bool	NormalFood::obsolete() const
 
 void	NormalFood::draw(const Renderer& renderer) const
 {
-  renderer->drawWall(m_x, m_y);
+  renderer->draw("apple", m_x, m_y, 0);
 }
 
 bool	NormalFood::collide(int x, int y) const

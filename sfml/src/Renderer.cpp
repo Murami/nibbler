@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Tue Apr  1 22:11:30 2014 pinon
+// Last update Wed Apr  2 02:18:02 2014 pinon
 //
 
 #include <exception>
@@ -21,7 +21,6 @@ namespace API
     m_window(sf::VideoMode(width * TILESIZE, height * TILESIZE), "Test")
   {
     int			i;
-    std::stringstream	ss;
     std::string		str;
 
     if (width > 200 || height > 200)
@@ -31,9 +30,11 @@ namespace API
     i = 1;
     while (i <= 48)
       {
+	std::stringstream   ss;
 	ss << i;
 	str = ss.str();
-	m_tiles["body"].LoadFromFile("./sfml/assets/sprites/ghost_" + str + ".bmp");
+	m_tiles[str].LoadFromFile("./sfml/assets/sprites/ghost_" + str + ".bmp");
+	m_tiles[str].SetSmooth(true);
 	i++;
       }
     m_tiles["head"].LoadFromFile("./sfml/assets/sprites/head_1.bmp");
@@ -135,13 +136,15 @@ namespace API
   */
 
   void	Renderer::draw(const std::string& ressource, int x, int y,
-		       Orientation ori) const
+		       int rotation) const
   {
     sf::Sprite	sprite(m_tiles.at(ressource));
 
-    sprite.SetPosition(x * TILESIZE , m_window.GetHeight() - (y + 1) * TILESIZE);
-    if (ori)
-      sprite.SetRotation(ori * 90);
+    sprite.SetSubRect(sf::Rect<int>(1, 1, TILESIZE, TILESIZE));
+    sprite.SetCenter(TILESIZE / 2, TILESIZE / 2);
+    sprite.SetRotation(rotation);
+    sprite.SetPosition(x * TILESIZE + TILESIZE / 2,
+		       m_window.GetHeight() - (y + 1) * TILESIZE + TILESIZE / 2);
     m_window.Draw(sprite);
   }
 };

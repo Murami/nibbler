@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Tue Apr  1 23:08:48 2014 guerot_a
+// Last update Wed Apr  2 02:54:11 2014 pinon
 //
 
 #ifndef SNAKE_HPP
@@ -20,7 +20,7 @@
 class MapObject;
 class IObject;
 
-#define SNAKE_UPDATE_PERIOD	(16.f)
+#define SNAKE_UPDATE_PERIOD	(10.f)
 
 class Snake
 {
@@ -34,6 +34,8 @@ public:
   void	turnRight();
   void	turnLeft();
 
+  void	addElem();
+  void	addSkin();
   bool	collideMap(int width, int height) const;
   bool	collideSnake(int x, int y) const;
 
@@ -45,11 +47,13 @@ private:
 
 private:
   std::list<Vector2i>		m_snakeLimbs;
+  std::vector<std::string>	m_skinLimbs;
   Vector2i			m_direction;
   Vector2i			m_size;
   int				m_boostDuration;
   bool				m_boost;
   bool				m_alive;
+  bool				m_isFed;
   Timer				m_timer;
 };
 

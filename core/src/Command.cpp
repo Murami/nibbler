@@ -5,10 +5,35 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Wed Apr  2 10:39:54 2014 guerot_a
-// Last update Wed Apr  2 10:48:36 2014 guerot_a
+// Last update Wed Apr  2 11:17:08 2014 guerot_a
 //
 
 #include "Command.hpp"
+#include "Game.hpp"
+#include "Snake.hpp"
+
+
+/*
+** Commands constructions
+*/
+
+Game_Left_Pressed::Game_Left_Pressed(Snake& snake) :
+  m_snake(snake) {}
+
+Game_Right_Pressed::Game_Right_Pressed(Snake& snake) :
+  m_snake(snake) {}
+
+Game_Space_Pressed::Game_Space_Pressed(Snake& snake) :
+  m_snake(snake) {}
+
+Game_Space_Released::Game_Space_Released(Snake& snake) :
+  m_snake(snake) {}
+
+Game_Escape_Pressed::Game_Escape_Pressed(Game& game) :
+  m_game(game) {}
+
+App_Quit::App_Quit(Game& game) :
+  m_game(game) {}
 
 /*
 ** Commands tests
@@ -75,10 +100,10 @@ void	Game_Space_Released::run() const
 
 void	Game_Escape_Pressed::run() const
 {
-  m_game.m_alive = false;
+  m_game.close();
 }
 
 void	App_Quit::run() const
 {
-  m_game.m_alive = false;
+  m_game.close();
 }
