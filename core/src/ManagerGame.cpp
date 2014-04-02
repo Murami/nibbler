@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Tue Apr  1 22:46:14 2014 guerot_a
+// Last update Wed Apr  2 10:38:42 2014 guerot_a
 //
 
 #include <cstdlib>
@@ -16,53 +16,33 @@
 Game::ManagerGame::ManagerGame(Game& game) :
   m_game(game)
 {
+  m_commands.push_back(new Game_Left_Pressed(m_snake));
+  m_commands.push_back(new Game_Right_Pressed(m_snake));
+  m_commands.push_back(new Game_Space_Pressed(m_snake));
+  m_commands.push_back(new Game_Space_Released(m_snake));
+  m_commands.push_back(new Game_Escape_Pressed(m_game));
+  m_commands.push_back(new App_Quit(m_game));
 }
 
 Game::ManagerGame::~ManagerGame()
 {
+  std::vector<ICommand*>::iterator	it;
+
+  it = m_commands.begin();
+  while (it != m_commands.end())
+    it = m_commands.erase(it);
 }
 
 void	Game::ManagerGame::handleEvent(const API::Event& event)
 {
-  if (event.type == API::Event::Closed)
+  std::vector<ICommand*>::iterator	it;
+
+  for (it = m_commands.begin(); it < m_commands.end(); it++)
     {
-      m_game.m_alive = false;
-    }
-  else if (event.type == API::Event::KeyPressed)
-    {
-      switch (event.key)
+      if ((*it)->isActive(event))
 	{
-	case API::Key::Left:
-	  m_snake.turnLeft();
-	  break;
-
-	case API::Key::Right:
-	  m_snake.turnRight();
-	  break;
-
-	case API::Key::Space:
-	  m_snake.enableBoost();
-	  break;
-
-	case API::Key::Escape:
-	  // m_game.m_manager = new ManagerGamePauseOverlay(m_game, this);
-	  m_game.m_alive = false;
-	  break;
-
-	default:
-	  break;
-	}
-    }
-  else if (event.type == API::Event::KeyReleased)
-    {
-      switch (event.key)
-	{
-	case API::Key::Space:
-	  m_snake.disableBoost();
-	  break;
-
-	default:
-	  break;
+	  (*it)->run();
+	  return;
 	}
     }
 }

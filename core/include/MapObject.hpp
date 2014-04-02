@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:02:07 2014 guerot_a
-// Last update Tue Apr  1 23:23:50 2014 guerot_a
+// Last update Wed Apr  2 09:19:36 2014 guerot_a
 //
 
 #ifndef MAP_OBJECT_HPP
@@ -32,6 +32,8 @@ public:
   void	useObject(int x, int y, const Snake& snake) const;
 
   void	addObject(IObject* object);
+  void	addObjectRandom();
+  void	addObjectRandom(const std::string& objectType);
 
 private:
   std::vector<IObject*>	m_objectList;

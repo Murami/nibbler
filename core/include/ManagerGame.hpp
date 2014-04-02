@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 16:11:26 2014 guerot_a
-// Last update Tue Apr  1 22:47:37 2014 guerot_a
+// Last update Wed Apr  2 10:20:33 2014 guerot_a
 //
 
 #ifndef MANAGER_GAME_HPP
@@ -30,9 +30,10 @@ public:
   void	draw() const;
 
 private:
-  Game&			m_game;
-  Snake			m_snake;
-  MapObject		m_mapObject;
+  Game&				m_game;
+  Snake				m_snake;
+  MapObject			m_mapObject;
+  std::vector<ICommand*>	m_commands;
 };
 
 #endif /* MANAGER_GAME_HPP */

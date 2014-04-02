@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Tue Apr  1 22:43:11 2014 guerot_a
+// Last update Wed Apr  2 09:09:58 2014 guerot_a
 //
 
 #include <iostream>
@@ -25,6 +25,11 @@ NormalFood::NormalFood(int x, int y)
 
 NormalFood::~NormalFood()
 {
+}
+
+const std::string&	getType() const
+{
+  return ("NormalFood");
 }
 
 void	NormalFood::use(const Snake& snake) const
