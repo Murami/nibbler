@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Thu Apr  3 13:35:31 2014 guerot_a
+// Last update Thu Apr  3 14:08:23 2014 guerot_a
 //
 
 #include <exception>
@@ -38,6 +38,16 @@ namespace API
       }
     m_tiles["head"].LoadFromFile("./sfml/assets/sprites/head_1.bmp");
     m_tiles["apple"].LoadFromFile("./sfml/assets/sprites/apple.png");
+
+    eventBinds[sf::Event::Closed] = Event::Closed;
+    eventBinds[sf::Event::KeyPressed] = Event::KeyPressed;
+    eventBinds[sf::Event::KeyReleased] = Event::KeyReleased;
+
+    eventKeyBinds[sf::Key::Left] = Key::Left;
+    eventKeyBinds[sf::Key::Right] = Key::Right;
+    eventKeyBinds[sf::Key::Space] = Key::Space;
+    eventKeyBinds[sf::Key::Escape] = Key::Escape;
+    eventKeyBinds[sf::Key::Return] = Key::Return;
   }
 
   Renderer::~Renderer()
@@ -56,66 +66,28 @@ namespace API
 
   bool	Renderer::getEvent(Event& eventRcv) const
   {
+    std::map<sf::Event::EventType, Event::EventType>::const_iterator	itType;
+    std::map<sf::Key::Code, Key::Code>::const_iterator			itKey;
     sf::Event	event;
 
     if (!m_window.GetEvent(event))
+      return (false);
+    eventRcv.type = Event::None;
+    eventRcv.key = Key::None;
+    for (itType = eventBinds.begin(); itType != eventBinds.end(); itType++)
       {
-	eventRcv.type = Event::None;
-	eventRcv.key = Key::None;
-	return (false);
+	if ((*itType).first == event.Type)
+	  eventRcv.type = (*itType).second;
       }
-    switch (event.Type)
+
+    if (event.Type == sf::Event::KeyPressed ||
+	event.Type == sf::Event::KeyReleased)
       {
-      case sf::Event::Closed:
-	eventRcv.type = Event::Closed;
-	break;
-
-      case sf::Event::KeyPressed:
-      case sf::Event::KeyReleased:
-	{
-	  if (event.Type == sf::Event::KeyPressed)
-	    eventRcv.type = Event::KeyPressed;
-	  else
-	    eventRcv.type = Event::KeyReleased;
-
-	  switch (event.Key.Code)
-	    {
-	    case sf::Key::Left:
-	      eventRcv.key = Key::Left;
-	      break;
-
-	    case sf::Key::Right:
-	      eventRcv.key = Key::Right;
-	      break;
-
-	    case sf::Key::Up:
-	      eventRcv.key = Key::Up;
-	      break;
-
-	    case sf::Key::Down:
-	      eventRcv.key = Key::Down;
-	      break;
-
-	    case sf::Key::Space:
-	      eventRcv.key = Key::Space;
-	      break;
-
-	    case sf::Key::Escape:
-	      eventRcv.key = Key::Escape;
-	      break;
-
-	    case sf::Key::Return:
-	      eventRcv.key = Key::Return;
-	      break;
-
-	    default:
-	      break;
-	    }
-
-	default:
-	  break;
-	}
-	break;
+	for (itKey = eventKeyBinds.begin(); itKey != eventKeyBinds.end(); itKey++)
+	  {
+	    if ((*itKey).first == event.Key.Code)
+	      eventRcv.key = (*itKey).second;
+	  }
       }
     return (true);
   }

@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Wed Apr  2 01:58:39 2014 pinon
+// Last update Thu Apr  3 14:11:04 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -41,6 +41,10 @@ namespace API
   private:
     mutable sf::RenderWindow		m_window;
     std::map<std::string, sf::Image>	m_tiles;
+
+  public:
+    std::map<sf::Key::Code, Key::Code>			eventKeyBinds;
+    std::map<sf::Event::EventType, Event::EventType>	eventBinds;
   };
 };
 

@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sat Mar 29 22:42:27 2014 guerot_a
+## Last update Thu Apr  3 14:03:33 2014 guerot_a
 ##
 
 ## FILES
@@ -43,7 +43,7 @@ LDFLAGS		=
 
 ## RUNS
 
-CC		=	g++
+CC		=	g++ -fmax-errors=2
 RM		=	rm -rf
 MD		=	mkdir -p
 
