@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Wed Apr  2 11:05:35 2014 guerot_a
+// Last update Thu Apr  3 13:00:20 2014 guerot_a
 //
 
 #include <iostream>
@@ -22,6 +22,7 @@ NormalFood::NormalFood(int x, int y)
     m_x(x),
     m_y(y)
 {
+  m_type = "NormalFood";
 }
 
 NormalFood::~NormalFood()

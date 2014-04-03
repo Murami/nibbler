@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Wed Apr  2 02:23:02 2014 pinon
+// Last update Thu Apr  3 13:31:09 2014 guerot_a
 //
 
 #include <cstdlib>
@@ -19,7 +19,9 @@
 Snake::Snake() :
   m_direction(1, 0),
   m_alive(true),
-  m_isFed(false)
+  m_isFed(false),
+  m_movePeriod(SNAKE_MOVE_NORMAL_PERIOD),
+  m_boost(SNAKE_BOOST_MAX)
 {
   m_snakeLimbs.push_back(Vector2i(4, 0));
   m_snakeLimbs.push_back(Vector2i(3, 0));
@@ -39,12 +41,17 @@ Snake::~Snake()
 
 void	Snake::enableBoost()
 {
-  m_boost = true;
+  m_movePeriod = SNAKE_MOVE_BOOST_PERIOD;
 }
 
 void	Snake::disableBoost()
 {
-  m_boost = false;
+  m_movePeriod = SNAKE_MOVE_NORMAL_PERIOD;
+}
+
+bool	Snake::boostEnabled()
+{
+  return (m_movePeriod == SNAKE_MOVE_BOOST_PERIOD);
 }
 
 void	Snake::turnRight()
@@ -70,7 +77,7 @@ void	Snake::addElem()
 void	Snake::addSkin()
 {
   std::stringstream ss;
-  
+
   ss << rand() % 48 + 1;
   m_skinLimbs.push_back(ss.str());
 }
@@ -78,13 +85,33 @@ void	Snake::addSkin()
 void	Snake::update(int width, int height, const MapObject& mapObject)
 {
   int	nbMove;
+  int	boostDelta;
 
   if (!m_alive)
     return;
-  nbMove = m_timer.getElapsedTime() / SNAKE_UPDATE_PERIOD;
+
+  if (m_boost == 0)
+    disableBoost();
+
+  if (boostEnabled())
+    {
+      boostDelta = m_boostTimer.getElapsedTime() / SNAKE_BOOST_DEGEN_PERIOD;
+      m_boost -= boostDelta;
+    }
+  else
+    {
+      boostDelta = m_boostTimer.getElapsedTime() / SNAKE_BOOST_REGEN_PERIOD;
+      m_boost += boostDelta;
+      if (m_boost > SNAKE_BOOST_MAX)
+	m_boost = SNAKE_BOOST_MAX;
+    }
+  if (boostDelta)
+    m_boostTimer.reset();
+
+  nbMove = m_moveTimer.getElapsedTime() / m_movePeriod;
   if (nbMove)
     {
-      m_timer.reset();
+      m_moveTimer.reset();
     }
   while (nbMove)
     {
@@ -121,7 +148,6 @@ bool	Snake::collideSnake(int x, int y) const
 
 void	Snake::moveSnake(int width, int height, const MapObject& mapObject)
 {
-  std::cout << m_isFed << std::endl;
   if (collideMap(width, height) ||
       collideSnake((m_snakeLimbs.front().x + m_direction.x),
 		   (m_snakeLimbs.front().y + m_direction.y)))

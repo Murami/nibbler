@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Wed Apr  2 02:54:11 2014 pinon
+// Last update Thu Apr  3 13:30:38 2014 guerot_a
 //
 
 #ifndef SNAKE_HPP
@@ -20,7 +20,11 @@
 class MapObject;
 class IObject;
 
-#define SNAKE_UPDATE_PERIOD	(10.f)
+#define SNAKE_MOVE_NORMAL_PERIOD	(16.f)
+#define SNAKE_MOVE_BOOST_PERIOD		(10.f)
+#define SNAKE_BOOST_DEGEN_PERIOD	(10.f)
+#define SNAKE_BOOST_REGEN_PERIOD	(30.f)
+#define	SNAKE_BOOST_MAX			(200.f)
 
 class Snake
 {
@@ -30,6 +34,7 @@ public:
 
   void	enableBoost();
   void	disableBoost();
+  bool	boostEnabled();
 
   void	turnRight();
   void	turnLeft();
@@ -50,11 +55,12 @@ private:
   std::vector<std::string>	m_skinLimbs;
   Vector2i			m_direction;
   Vector2i			m_size;
-  int				m_boostDuration;
-  bool				m_boost;
   bool				m_alive;
   bool				m_isFed;
-  Timer				m_timer;
+  Timer				m_moveTimer;
+  int				m_movePeriod;
+  Timer				m_boostTimer;
+  int				m_boost;
 };
 
 #endif /* SNAKE_HPP */

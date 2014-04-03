@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Wed Apr  2 02:18:02 2014 pinon
+// Last update Thu Apr  3 13:35:31 2014 guerot_a
 //
 
 #include <exception>
@@ -16,7 +16,6 @@
 
 namespace API
 {
-
   Renderer::Renderer(int width, int height) :
     m_window(sf::VideoMode(width * TILESIZE, height * TILESIZE), "Test")
   {

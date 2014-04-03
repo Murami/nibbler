@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Wed Apr  2 11:12:42 2014 guerot_a
+// Last update Thu Apr  3 13:01:24 2014 guerot_a
 //
 
 #include <iostream>
@@ -55,12 +55,17 @@ void	MapObject::update(int width, int height, const Snake& snake)
     }
 
   //create a food if there are no one on the map
+  bool	haveFood = false;
+
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
     {
       if ((*it)->getType() == "NormalFood")
-	return;
+	{
+	  haveFood = true;
+	}
     }
-  this->addObjectRandom("NormalFood", width, height, snake);
+  if (!haveFood)
+    this->addObjectRandom("NormalFood", width, height, snake);
 }
 
 void	MapObject::draw(const Renderer& renderer) const
