@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Thu Apr  3 13:30:38 2014 guerot_a
+// Last update Thu Apr  3 22:50:32 2014 guerot_a
 //
 
 #ifndef SNAKE_HPP
@@ -45,6 +45,7 @@ public:
   bool	collideSnake(int x, int y) const;
 
   void	update(int width, int height, const MapObject& mapObject);
+  void	updateCam(Renderer& renderer) const;
   void	draw(const Renderer& renderer) const;
 
 private:

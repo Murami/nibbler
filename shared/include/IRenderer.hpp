@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 21:51:22 2014 guerot_a
-// Last update Thu Apr  3 15:50:10 2014 guerot_a
+// Last update Thu Apr  3 22:46:22 2014 guerot_a
 //
 
 #ifndef IRENDERER_HPP
@@ -64,6 +64,7 @@ namespace API
     virtual bool	isOpen() const = 0;
     virtual void	clear() const = 0;
     virtual void	update() const = 0;
+    virtual void	updateCam(int x, int y, int xdir, int ydir) = 0;
 
     //game draws
 

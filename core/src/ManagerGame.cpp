@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Thu Apr  3 15:55:37 2014 guerot_a
+// Last update Thu Apr  3 22:50:58 2014 guerot_a
 //
 
 #include <cstdlib>
@@ -60,6 +60,7 @@ void	Game::ManagerGame::draw() const
   Renderer&	renderer = m_game.m_renderer;
 
   renderer->clear();
+  m_snake.updateCam(renderer);
   renderer->drawBackground(m_game.m_width, m_game.m_height);
   m_snake.draw(renderer);
   m_mapObject.draw(renderer);

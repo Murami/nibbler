@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Thu Apr  3 17:04:36 2014 guerot_a
+// Last update Thu Apr  3 22:54:11 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -33,6 +33,7 @@ namespace API
     bool	isOpen() const;
     void	clear() const;
     void	update() const;
+    void	updateCam(int x, int y, int xdir, int ydir);
 
     //game draws
 
@@ -42,8 +43,8 @@ namespace API
 
   private:
     void	loadTexture(const std::string& name, const std::string& filepath);
-    void	enableTexture(const std::string& name);
-    void	disableTexture();
+    void	enableTexture(const std::string& name) const;
+    void	disableTexture() const;
 
   private:
     mutable sf::RenderWindow		m_window;

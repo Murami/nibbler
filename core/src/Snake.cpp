@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Thu Apr  3 13:31:09 2014 guerot_a
+// Last update Thu Apr  3 22:52:28 2014 guerot_a
 //
 
 #include <cstdlib>
@@ -165,6 +165,12 @@ void	Snake::moveSnake(int width, int height, const MapObject& mapObject)
 			  *this);
     }
 
+}
+
+void	Snake::updateCam(Renderer& renderer) const
+{
+  renderer->updateCam(m_snakeLimbs.front().x, m_snakeLimbs.front().y,
+		      m_direction.x, m_direction.y);
 }
 
 void	Snake::draw(const Renderer& renderer) const
