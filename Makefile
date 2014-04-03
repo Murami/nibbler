@@ -5,10 +5,10 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Wed Mar 26 17:33:20 2014 guerot_a
-## Last update Sat Mar 29 22:43:54 2014 guerot_a
+## Last update Thu Apr  3 15:29:54 2014 guerot_a
 ##
 
-all:	core sfml
+all:	core sfml opengl
 
 core:
 	@echo "[core]"
@@ -24,6 +24,13 @@ sfml:
 	@cp -f sfml/bin/* .
 	@echo " "
 
+opengl:
+	@echo "[API OpenGL]"
+	@make -s -C opengl/
+	@echo "Copie des binaires dans bin/"
+	@cp -f opengl/bin/* .
+	@echo " "
+
 clean:
 	@echo "[core]"
 	@make -s clean -C core/
@@ -31,6 +38,10 @@ clean:
 	@echo "[API SFML]"
 	@make -s clean -C sfml/
 	@echo " "
+	@echo "[API OpenGL]"
+	@make -s clean -C opengl/
+	@echo " "
+
 
 fclean:
 	@echo "[core]"
@@ -39,8 +50,12 @@ fclean:
 	@echo "[API SFML]"
 	@make -s fclean -C sfml/
 	@echo " "
+	@echo "[API OpenGL]"
+	@make -s fclean -C opengl/
+	@echo " "
 	@rm -rf nibbler lib_nibbler_sfml16.so
+	@rm -rf nibbler lib_nibbler_opengl.so
 
 re:	fclean all
 
-.PHONY:	all clean fclean re sfml core
+.PHONY:	all clean fclean re sfml core opengl

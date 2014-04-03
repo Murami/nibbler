@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 21:51:22 2014 guerot_a
-// Last update Wed Apr  2 11:15:33 2014 guerot_a
+// Last update Thu Apr  3 15:50:10 2014 guerot_a
 //
 
 #ifndef IRENDERER_HPP
@@ -69,6 +69,7 @@ namespace API
 
     virtual void        draw(const std::string& ressource, int x, int y,
 			     int rotation) const = 0;
+    virtual void	drawBackground(int width, int height) const = 0;
   };
 };
 
