@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Thu Apr  3 15:58:54 2014 guerot_a
+// Last update Thu Apr  3 17:07:10 2014 guerot_a
 //
 
 #include <exception>
@@ -114,7 +114,7 @@ namespace API
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(10, 0, 20, 10, 10, 0, 0, 0, 1);
+    // gluLookAt(10, 0, 10, 10, 10, 0, 0, 0, 1);
     glColor3d(255, 0, 0);
 
     glBegin(GL_QUADS);
@@ -154,10 +154,10 @@ namespace API
 
   void	Renderer::drawBackground(int width, int height) const
   {
+    gluLookAt(10, 0, 15, 10, 10, 0, 0, 0, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(10, 0, 20, 10, 10, 0, 0, 0, 1);
     glColor3d(0, 255, 0);
 
     glBegin(GL_QUADS);
@@ -167,7 +167,59 @@ namespace API
     glVertex3f(width,	height,	0);
     glVertex3f(width,	0,	0);
 
+    glColor3d(0, 0, 255);
+
+    glVertex3f(width,	height,	0);
+    glVertex3f(width,	height,	1);
+    glVertex3f(0,	height,	1);
+    glVertex3f(0,	height,	0);
+
+    glVertex3f(width,	0,	0);
+    glVertex3f(width,	0,	1);
+    glVertex3f(width,	height,	1);
+    glVertex3f(width,	height,	0);
+
+    glVertex3f(0,	0,	0);
+    glVertex3f(0,	0,	1);
+    glVertex3f(0,	height,	1);
+    glVertex3f(0,	height,	0);
+
     glEnd();
+  }
+
+  void	Renderer::loadTexture(const std::string& name, const std::string& filepath)
+  {
+    GLuint	glid;
+    sf::Image	image;
+
+    if(!image.LoadFromFile(filepath))
+      return;
+    glGenTextures(1, &glid);
+    glBindTexture(GL_TEXTURE_2D, glid);
+    glTexParameteri(GL_TEXTURE_2D,
+		    GL_TEXTURE_MAG_FILTER,
+		    GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,
+		    GL_TEXTURE_MIN_FILTER,
+		    GL_LINEAR_MIPMAP_LINEAR);
+    gluBuild2DMipmaps(GL_TEXTURE_2D,
+		      GL_RGBA,
+		      image.GetWidth(),
+		      image.GetHeight(),
+		      GL_RGBA,
+		      GL_UNSIGNED_BYTE,
+		      image.GetPixelsPtr());
+    m_textures[name] = glid;
+  }
+
+  void	Renderer::enableTexture(const std::string& name)
+  {
+    glBindTexture(GL_TEXTURE_2D, m_textures[name]);
+  }
+
+  void	disableTexture()
+  {
+    glBindTexture(GL_TEXTURE_2D, 0);
   }
 };
 

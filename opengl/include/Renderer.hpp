@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Thu Apr  3 15:49:23 2014 guerot_a
+// Last update Thu Apr  3 17:04:36 2014 guerot_a
 //
 
 #ifndef RENDERER_HPP
@@ -41,8 +41,13 @@ namespace API
     void	drawBackground(int width, int height) const;
 
   private:
+    void	loadTexture(const std::string& name, const std::string& filepath);
+    void	enableTexture(const std::string& name);
+    void	disableTexture();
+
+  private:
     mutable sf::RenderWindow		m_window;
-    std::map<std::string, sf::Image>	m_tiles;
+    std::map<std::string, GLuint>	m_textures;
 
   public:
     std::map<sf::Key::Code, Key::Code>			eventKeyBinds;
