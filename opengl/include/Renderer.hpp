@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Thu Apr  3 22:54:11 2014 guerot_a
+// Last update Fri Apr  4 16:25:13 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -40,6 +40,8 @@ namespace API
     void	draw(const std::string& ressource, int x, int y,
 		     int rotation) const;
     void	drawBackground(int width, int height) const;
+    void	drawBoost(int boost, int boostmax) const;
+    void	drawScore(int score) const;
 
   private:
     void	loadTexture(const std::string& name, const std::string& filepath);

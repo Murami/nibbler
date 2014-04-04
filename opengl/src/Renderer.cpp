@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Fri Apr  4 13:48:29 2014 
+// Last update Fri Apr  4 16:27:56 2014 
 //
 
 #include <exception>
@@ -301,6 +301,14 @@ namespace API
   void	Renderer::disableTexture() const
   {
     glBindTexture(GL_TEXTURE_2D, 0);
+  }
+
+  void	Renderer::drawBoost(int boost, int boostmax) const
+  {
+  }
+
+  void	Renderer::drawScore(int score) const
+  {
   }
 };
 
