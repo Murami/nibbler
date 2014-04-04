@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 21:51:22 2014 guerot_a
-// Last update Fri Apr  4 13:20:22 2014 
+// Last update Fri Apr  4 16:19:47 2014 
 //
 
 #ifndef IRENDERER_HPP
@@ -66,8 +66,8 @@ namespace API
     virtual void	update() const = 0;
     virtual void	updateCam(int x, int y, int xdir, int ydir) = 0;
 
-    virtual void	drawScore(int score);
-    virtual void	drawBoost(int boost, int boostmax);
+    virtual void	drawScore(int score) const = 0;
+    virtual void	drawBoost(int boost, int boostmax) const = 0;
     virtual void        draw(const std::string& ressource, int x, int y,
 			     int rotation) const = 0;
     virtual void	drawBackground(int width, int height) const = 0;
