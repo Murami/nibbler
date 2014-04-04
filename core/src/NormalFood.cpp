@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 14:17:02 2014 guerot_a
-// Last update Thu Apr  3 13:00:20 2014 guerot_a
+// Last update Fri Apr  4 13:24:20 2014 
 //
 
 #include <iostream>
@@ -36,6 +36,7 @@ const std::string&	NormalFood::getType() const
 
 void	NormalFood::use(Snake& snake) const
 {
+  snake.addScore(10);
   snake.addElem();
   m_used = true;
 }

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Thu Apr  3 22:50:32 2014 guerot_a
+// Last update Fri Apr  4 13:21:52 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -20,7 +20,7 @@
 class MapObject;
 class IObject;
 
-#define SNAKE_MOVE_NORMAL_PERIOD	(16.f)
+#define SNAKE_MOVE_NORMAL_PERIOD	(20.f)
 #define SNAKE_MOVE_BOOST_PERIOD		(10.f)
 #define SNAKE_BOOST_DEGEN_PERIOD	(10.f)
 #define SNAKE_BOOST_REGEN_PERIOD	(30.f)
@@ -48,6 +48,9 @@ public:
   void	updateCam(Renderer& renderer) const;
   void	draw(const Renderer& renderer) const;
 
+  void	addScore(int score);
+  int	getScore() const;
+
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
 
@@ -62,6 +65,7 @@ private:
   int				m_movePeriod;
   Timer				m_boostTimer;
   int				m_boost;
+  int				m_score;
 };
 
 #endif /* SNAKE_HPP */

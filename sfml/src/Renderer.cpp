@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Thu Apr  3 14:08:23 2014 guerot_a
+// Last update Fri Apr  4 13:31:20 2014 
 //
 
 #include <exception>
@@ -102,6 +102,14 @@ namespace API
     m_window.Display();
   }
 
+  void	Renderer::updateCam(int x, int y, int xdir, int ydir)
+  {
+    (void) x;
+    (void) y;
+    (void) xdir;
+    (void) ydir;
+  }
+
   /*
   ** Game draws
   */
@@ -117,6 +125,23 @@ namespace API
     sprite.SetPosition(x * TILESIZE + TILESIZE / 2,
 		       m_window.GetHeight() - (y + 1) * TILESIZE + TILESIZE / 2);
     m_window.Draw(sprite);
+  }
+
+  void	Renderer::drawBackground(int x, int y) const
+  {
+    (void) x;
+    (void) y;
+  }
+
+  void	Renderer::drawScore(int score) const
+  {
+    (void) score;
+  }
+
+  void	Renderer::drawBoost(int boost, int boostmax) const
+  {
+    (void) boost;
+    (void) boostmax;
   }
 };
 

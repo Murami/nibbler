@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Thu Apr  3 14:11:04 2014 guerot_a
+// Last update Fri Apr  4 13:31:11 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -32,11 +32,15 @@ namespace API
     bool	isOpen() const;
     void	clear() const;
     void	update() const;
+    void	updateCam(int x, int y, int xdir, int ydir);
 
     //game draws
 
     void	draw(const std::string& ressource, int x, int y,
 		     int rotation) const;
+    void	drawBackground(int width, int height) const;
+    void	drawScore(int score) const;
+    void	drawBoost(int boost, int boostmax) const;
 
   private:
     mutable sf::RenderWindow		m_window;

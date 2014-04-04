@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Thu Apr  3 22:52:28 2014 guerot_a
+// Last update Fri Apr  4 13:25:24 2014 
 //
 
 #include <cstdlib>
@@ -21,7 +21,8 @@ Snake::Snake() :
   m_alive(true),
   m_isFed(false),
   m_movePeriod(SNAKE_MOVE_NORMAL_PERIOD),
-  m_boost(SNAKE_BOOST_MAX)
+  m_boost(SNAKE_BOOST_MAX),
+  m_score(0)
 {
   m_snakeLimbs.push_back(Vector2i(4, 0));
   m_snakeLimbs.push_back(Vector2i(3, 0));
@@ -190,4 +191,14 @@ void	Snake::draw(const Renderer& renderer) const
 	renderer->draw(m_skinLimbs[i], (*it).x, (*it).y, 0);
       i++;
     }
+}
+
+void	Snake::addScore(int score)
+{
+  m_score += score;
+}
+
+int	Snake::getScore() const
+{
+  return (m_score);
 }

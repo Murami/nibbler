@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Fri Apr  4 12:14:00 2014 
+// Last update Fri Apr  4 13:48:29 2014 
 //
 
 #include <exception>
@@ -111,11 +111,11 @@ namespace API
   void	Renderer::updateCam(int x, int y, int xdir, int ydir)
   {
     glPushMatrix();
-    gluLookAt(x - xdir * 10 - 0.5 * ydir,
-	      y - ydir * 10 + 0.5 * xdir,
+    gluLookAt(x - xdir * 10,
+	      y - ydir * 10,
 	      5,
-    	      x + xdir * 5 - 0.5 * ydir,
-	      y + ydir * 5 + 0.5 * xdir,
+    	      x + xdir * 5,
+	      y + ydir * 5,
 	      0,
     	      0, 0, 1);
     glPushMatrix();
@@ -144,58 +144,58 @@ namespace API
     glBegin(GL_QUADS);
 
     glTexCoord2d(0, 0);
-    glVertex3f(x,	y,	0);
+    glVertex3f(x,	y,	0.3);
     glTexCoord2d(1, 0);
-    glVertex3f(x + 0.8,	y,	0);
+    glVertex3f(x + 0.8,	y,	0.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x + 0.8,	y,	1);
+    glVertex3f(x + 0.8,	y,	1.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x,	y,	1);
+    glVertex3f(x,	y,	1.3);
 
     glTexCoord2d(0, 0);
-    glVertex3f(x,	y,	0);
+    glVertex3f(x,	y,	0.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x,	y,	1);
+    glVertex3f(x,	y,	1.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x,	y + 0.8,1);
+    glVertex3f(x,	y + 0.8,1.3);
     glTexCoord2d(1, 0);
-    glVertex3f(x,	y + 0.8,0);
+    glVertex3f(x,	y + 0.8,0.3);
 
     glTexCoord2d(0, 0);
-    glVertex3f(x,	y + 0.8,0);
+    glVertex3f(x,	y + 0.8,0.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x,	y + 0.8,1);
+    glVertex3f(x,	y + 0.8,1.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x + 0.8,	y + 0.8,1);
+    glVertex3f(x + 0.8,	y + 0.8,1.3);
     glTexCoord2d(1, 0);
-    glVertex3f(x + 0.8,	y + 0.8,0);
+    glVertex3f(x + 0.8,	y + 0.8,0.3);
 
     glTexCoord2d(1, 0);
-    glVertex3f(x + 0.8,	y + 0.8,0);
+    glVertex3f(x + 0.8,	y + 0.8,0.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x + 0.8,	y + 0.8,1);
+    glVertex3f(x + 0.8,	y + 0.8,1.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x + 0.8,	y,	1);
+    glVertex3f(x + 0.8,	y,	1.3);
     glTexCoord2d(0, 0);
-    glVertex3f(x + 0.8,	y,	0);
+    glVertex3f(x + 0.8,	y,	0.3);
 
     glTexCoord2d(1, 0);
-    glVertex3f(x + 0.8,	y,	1);
+    glVertex3f(x + 0.8,	y,	1.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x + 0.8,	y + 0.8,1);
+    glVertex3f(x + 0.8,	y + 0.8,1.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x,	y + 0.8,1);
+    glVertex3f(x,	y + 0.8,1.3);
     glTexCoord2d(0, 0);
-    glVertex3f(x,	y,	1);
+    glVertex3f(x,	y,	1.3);
 
     glTexCoord2d(1, 0);
-    glVertex3f(x + 0.8,	y,	0);
+    glVertex3f(x + 0.8,	y,	0.3);
     glTexCoord2d(1, 1);
-    glVertex3f(x + 0.8,	y + 0.8,0);
+    glVertex3f(x + 0.8,	y + 0.8,0.3);
     glTexCoord2d(0, 1);
-    glVertex3f(x,	y + 0.8,0);
+    glVertex3f(x,	y + 0.8,0.3);
     glTexCoord2d(0, 0);
-    glVertex3f(x,	y,	0);
+    glVertex3f(x,	y,	0.3);
 
     glEnd();
   }
