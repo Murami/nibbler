@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Thu Apr  3 23:36:41 2014 guerot_a
+// Last update Fri Apr  4 12:14:00 2014 
 //
 
 #include <exception>
@@ -28,7 +28,7 @@ namespace API
     settings.DepthBits = 24;
     settings.StencilBits = 8;
     settings.AntialiasingLevel = 16;
-    m_window.Create(sf::VideoMode(800, 600, 32), "suneeku", sf::Style::Close, settings);
+    m_window.Create(sf::VideoMode(1400, 1000, 32), "suneeku", sf::Style::Close, settings);
     m_window.SetFramerateLimit(0);
     m_window.EnableKeyRepeat(false);
 
@@ -111,8 +111,12 @@ namespace API
   void	Renderer::updateCam(int x, int y, int xdir, int ydir)
   {
     glPushMatrix();
-    gluLookAt(x - xdir * 10, y - ydir * 10, 5,
-    	      x + xdir * 5, y + ydir * 5, 0,
+    gluLookAt(x - xdir * 10 - 0.5 * ydir,
+	      y - ydir * 10 + 0.5 * xdir,
+	      5,
+    	      x + xdir * 5 - 0.5 * ydir,
+	      y + ydir * 5 + 0.5 * xdir,
+	      0,
     	      0, 0, 1);
     glPushMatrix();
   }
