@@ -1,4 +1,3 @@
-
 //
 // Renderer.hpp for  in /home/otoshigami/rendu/cpp_nibbler/sfml
 //
@@ -6,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Fri Apr  4 13:31:11 2014 
+// Last update Fri Apr  4 21:09:16 2014 Desabre Quentin
 //
 
 #ifndef RENDERER_HPP
@@ -34,6 +33,13 @@ namespace API
     void	update() const;
     void	updateCam(int x, int y, int xdir, int ydir);
 
+    //init
+
+    void	initWindow(int, int);
+    void	initSprite();
+    void	initRessource();
+    void	initBinds();
+
     //game draws
 
     void	draw(const std::string& ressource, int x, int y,
@@ -42,9 +48,16 @@ namespace API
     void	drawScore(int score) const;
     void	drawBoost(int boost, int boostmax) const;
 
+    // misc
+
+    std::string	toString(int) const;
+
   private:
     mutable sf::RenderWindow		m_window;
     std::map<std::string, sf::Image>	m_tiles;
+    sf::Shape				m_hud;
+    sf::Shape				m_boost;
+    sf::Font				m_font;
 
   public:
     std::map<sf::Key::Code, Key::Code>			eventKeyBinds;

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Fri Apr  4 13:25:24 2014 
+// Last update Sat Apr  5 16:28:38 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -20,15 +20,15 @@ Snake::Snake() :
   m_direction(1, 0),
   m_alive(true),
   m_isFed(false),
+  m_firstRun(0),
   m_movePeriod(SNAKE_MOVE_NORMAL_PERIOD),
   m_boost(SNAKE_BOOST_MAX),
   m_score(0)
 {
-  m_snakeLimbs.push_back(Vector2i(4, 0));
-  m_snakeLimbs.push_back(Vector2i(3, 0));
-  m_snakeLimbs.push_back(Vector2i(2, 0));
-  m_snakeLimbs.push_back(Vector2i(1, 0));
-  m_snakeLimbs.push_back(Vector2i(0, 0));
+  m_snakeLimbs.push_back(Vector2i(3, 9));
+  m_snakeLimbs.push_back(Vector2i(2, 9));
+  m_snakeLimbs.push_back(Vector2i(1, 9));
+  m_snakeLimbs.push_back(Vector2i(0, 9));
   addSkin();
   addSkin();
   addSkin();
@@ -83,6 +83,8 @@ void	Snake::addSkin()
   m_skinLimbs.push_back(ss.str());
 }
 
+#include <unistd.h>
+
 void	Snake::update(int width, int height, const MapObject& mapObject)
 {
   int	nbMove;
@@ -90,6 +92,11 @@ void	Snake::update(int width, int height, const MapObject& mapObject)
 
   if (!m_alive)
     return;
+  if (m_firstRun <= 10)
+    {
+      m_firstRun++;
+      m_moveTimer.reset();
+    }
 
   if (m_boost == 0)
     disableBoost();
@@ -131,12 +138,13 @@ bool	Snake::collideMap(int x, int y) const
   return false;
 }
 
-bool	Snake::collideSnake(int x, int y) const
+bool	Snake::collideSnake(int x, int y, int flag) const
 {
   std::list<Vector2i>::const_iterator it;
 
   it = m_snakeLimbs.begin();
-  it++;
+  if (!flag)
+    it++;
   while (it != m_snakeLimbs.end())
     {
       if ((*it).x == x && (*it).y == y)
@@ -151,7 +159,7 @@ void	Snake::moveSnake(int width, int height, const MapObject& mapObject)
 {
   if (collideMap(width, height) ||
       collideSnake((m_snakeLimbs.front().x + m_direction.x),
-		   (m_snakeLimbs.front().y + m_direction.y)))
+		   (m_snakeLimbs.front().y + m_direction.y), 0))
     m_alive = false;
   else
     {
@@ -201,4 +209,9 @@ void	Snake::addScore(int score)
 int	Snake::getScore() const
 {
   return (m_score);
+}
+
+int	Snake::getBoost() const
+{
+  return (m_boost);
 }

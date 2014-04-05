@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Sat Apr  5 17:58:01 2014 
+// Last update Sat Apr  5 20:10:53 2014 
 //
 
 #include <iostream>
@@ -25,6 +25,7 @@ Game::ManagerGame::ManagerGame(Game& game) :
   m_commands.push_back(new Game_Space_Released(m_snake));
   m_commands.push_back(new Game_Escape_Pressed(m_game));
   m_commands.push_back(new App_Quit(m_game));
+
 }
 
 Game::ManagerGame::~ManagerGame()
@@ -63,6 +64,8 @@ void	Game::ManagerGame::draw() const
   renderer->clear();
   m_snake.updateCam(renderer);
   renderer->drawBackground(m_game.m_width, m_game.m_height);
+  renderer->drawBoost(m_snake.getBoost(), SNAKE_BOOST_MAX);
+  renderer->drawScore(m_snake.getScore());
   m_snake.draw(renderer);
   m_mapObject.draw(renderer);
   renderer->update();

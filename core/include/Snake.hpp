@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Sat Apr  5 18:22:00 2014 
+// Last update Sat Apr  5 20:10:34 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -42,7 +42,7 @@ public:
   void	addElem();
   void	addSkin();
   bool	collideMap(int width, int height) const;
-  bool	collideSnake(int x, int y) const;
+  bool	collideSnake(int x, int y, int flag) const;
 
   void	update(int width, int height, const MapObject& mapObject);
   void	updateCam(Renderer& renderer) const;
@@ -50,6 +50,7 @@ public:
 
   void	addScore(int score);
   int	getScore() const;
+  int	getBoost() const;
 
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
@@ -61,6 +62,7 @@ private:
   Vector2i			m_size;
   bool				m_alive;
   bool				m_isFed;
+  int				m_firstRun;
   Timer				m_moveTimer;
   int				m_movePeriod;
   Timer				m_boostTimer;

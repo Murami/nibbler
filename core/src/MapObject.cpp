@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Thu Apr  3 13:01:24 2014 guerot_a
+// Last update Sat Apr  5 16:26:35 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -36,7 +36,6 @@ void	MapObject::update(int width, int height, const Snake& snake)
 {
   std::vector<IObject*>::iterator	it;
 
-  //delete used/obsolete objects
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
     {
       if((*it)->obsolete())
@@ -46,8 +45,6 @@ void	MapObject::update(int width, int height, const Snake& snake)
 	  it--;
 	}
     }
-
-  //create an object at random position at a given frequency
   if (m_objectCreationTimer.getElapsedTime() > OBJECT_CREATION_PERIOD)
     {
       this->addObjectRandom(width, height, snake);
@@ -105,7 +102,7 @@ void	MapObject::addObjectRandom(const std::string& objectType, int width, int he
   Vector2i	vect;
 
   vect(rand() % width, rand() % height);
-  while (snake.collideSnake(vect.x, vect.y) && collideObject(vect.x, vect.y))
+  while (snake.collideSnake(vect.x, vect.y, 1) || collideObject(vect.x, vect.y))
     vect(rand() % width, rand() % height);
   addObject(m_objectFactory.create(objectType, vect.x, vect.y));
 }
@@ -115,7 +112,7 @@ void	MapObject::addObjectRandom(int width, int height, const Snake& snake)
   Vector2i	vect;
 
   vect(rand() % width, rand() % height);
-  while (snake.collideSnake(vect.x, vect.y) && collideObject(vect.x, vect.y))
+  while (snake.collideSnake(vect.x, vect.y, 1) || collideObject(vect.x, vect.y))
     vect(rand() % width, rand() % height);
   addObject(m_objectFactory.randomCreate(vect.x, vect.y));
 }
