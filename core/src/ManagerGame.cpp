@@ -5,9 +5,10 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Thu Apr  3 22:50:58 2014 guerot_a
+// Last update Sat Apr  5 17:58:01 2014 
 //
 
+#include <iostream>
 #include <cstdlib>
 #include "NormalFood.hpp"
 #include "ManagerGame.hpp"

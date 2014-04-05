@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Fri Apr  4 16:27:56 2014 
+// Last update Sat Apr  5 20:08:21 2014 
 //
 
 #include <exception>
@@ -17,7 +17,9 @@
 namespace API
 {
   Renderer::Renderer(int width, int height) :
-    m_window()
+    m_window(),
+    m_height(height),
+    m_width(width)
   {
     sf::WindowSettings	settings;
 
@@ -45,14 +47,15 @@ namespace API
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(90.f, 1.f, 1.f, 500.f);
+    gluPerspective(90.f, 1.f, 0.1f, 2000.f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
     //load textures
     loadTexture("ground", "opengl/assets/sprites/ground.bmp");
-    loadTexture("wall", "opengl/assets/sprites/wall.jpg");
+    loadTexture("wall", "opengl/assets/sprites/skybox2.png");
     loadTexture("snake", "opengl/assets/sprites/snake.jpg");
+    loadTexture("limit", "opengl/assets/sprites/limit.png");
 
     //bind events
     eventBinds[sf::Event::Closed] = Event::Closed;
@@ -111,9 +114,9 @@ namespace API
   void	Renderer::updateCam(int x, int y, int xdir, int ydir)
   {
     glPushMatrix();
-    gluLookAt(x - xdir * 10,
-	      y - ydir * 10,
-	      5,
+    gluLookAt(x - xdir * 10 + abs(ydir) * 0.5,
+	      y - ydir * 10 + abs(xdir) * 0.5,
+	      6,
     	      x + xdir * 5,
 	      y + ydir * 5,
 	      0,
@@ -128,6 +131,132 @@ namespace API
 
   void	Renderer::update() const
   {
+    //draw limit
+    enableTexture("limit");
+    glColor3d(0, 100, 255);
+    glBegin(GL_QUADS);
+
+    //limit haute / nord - interieur
+    glTexCoord2d(m_width, 0);
+    glVertex3d(m_width, m_height, 0);
+    glTexCoord2d(m_width, 1);
+    glVertex3d(m_width, m_height, 4);
+    glTexCoord2d(0, 1);
+    glVertex3d(0, m_height, 4);
+    glTexCoord2d(0, 0);
+    glVertex3d(0, m_height, 0);
+
+    //limit haute / nord - dessus
+    glTexCoord2d(-1, 0);
+    glVertex3d(-1, m_height + 1, 4);
+    glTexCoord2d(-1, 1);
+    glVertex3d(-1, m_height, 4);
+    glTexCoord2d(m_width + 1, 1);
+    glVertex3d(m_width + 1, m_height, 4);
+    glTexCoord2d(m_width + 1, 0);
+    glVertex3d(m_width + 1, m_height + 1, 4);
+
+    //limit haut / nord - exterieur
+    glTexCoord2d(-1, 0);
+    glVertex3d(-1, m_height + 1, 0);
+    glTexCoord2d(-1, 1);
+    glVertex3d(-1, m_height + 1, 4);
+    glTexCoord2d(m_width + 1, 1);
+    glVertex3d(m_width + 1, m_height + 1, 4);
+    glTexCoord2d(m_width + 1, 0);
+    glVertex3d(m_width + 1, m_height + 1, 0);
+
+    //limit basse / sud - interieur
+    glTexCoord2d(0, 1);
+    glVertex3d(0, 0, 4);
+    glTexCoord2d(m_width, 1);
+    glVertex3d(m_width, 0, 4);
+    glTexCoord2d(m_width, 0);
+    glVertex3d(m_width, 0, 0);
+    glTexCoord2d(0, 0);
+    glVertex3d(0, 0, 0);
+
+    //limit basse / sud - dessus
+    glTexCoord2d(-1, 0);
+    glVertex3d(-1, 0, 4);
+    glTexCoord2d(-1, 1);
+    glVertex3d(-1, -1, 4);
+    glTexCoord2d(m_width + 1, 1);
+    glVertex3d(m_width + 1, -1, 4);
+    glTexCoord2d(m_width + 1, 0);
+    glVertex3d(m_width + 1, 0, 4);
+
+    //limit basse / sud - exterieur
+    glTexCoord2d(m_width + 1, 0);
+    glVertex3d(m_width + 1, -1, 0);
+    glTexCoord2d(m_width + 1, 1);
+    glVertex3d(m_width + 1, -1, 4);
+    glTexCoord2d(-1, 1);
+    glVertex3d(-1, -1, 4);
+    glTexCoord2d(-1, 0);
+    glVertex3d(-1, -1, 0);
+
+    //limit droite / est - interieur
+    glTexCoord2d(0, 0);
+    glVertex3d(m_width, 0, 0);
+    glTexCoord2d(0, 1);
+    glVertex3d(m_width , 0, 4);
+    glTexCoord2d(m_height, 1);
+    glVertex3d(m_width , m_height, 4);
+    glTexCoord2d(m_height, 0);
+    glVertex3d(m_width, m_height, 0);
+
+    //limit droite / est - dessus
+    glTexCoord2d(0, 0);
+    glVertex3d(m_width , 0, 4);
+    glTexCoord2d(0, 1);
+    glVertex3d(m_width + 1 , 0, 4);
+    glTexCoord2d(m_height, 1);
+    glVertex3d(m_width + 1, m_height, 4);
+    glTexCoord2d(m_height, 0);
+    glVertex3d(m_width, m_height, 4);
+
+    //limit droite / est - exterieur
+    glTexCoord2d(m_height + 1, 0);
+    glVertex3d(m_width + 1, m_height + 1, 0);
+    glTexCoord2d(m_height + 1, 1);
+    glVertex3d(m_width + 1, m_height + 1, 4);
+    glTexCoord2d(-1, 1);
+    glVertex3d(m_width + 1, -1, 4);
+    glTexCoord2d(-1, 0);
+    glVertex3d(m_width + 1, -1, 0);
+
+    //limit gauche / ouest - interieur
+    glTexCoord2d(m_width, 0);
+    glVertex3d(0, m_height, 0);
+    glTexCoord2d(m_width, 1);
+    glVertex3d(0, m_height, 4);
+    glTexCoord2d(0, 1);
+    glVertex3d(0, 0, 4);
+    glTexCoord2d(0, 0);
+    glVertex3d(0, 0, 0);
+
+    //limit gauche / ouest - dessus
+    glTexCoord2d(0, 0);
+    glVertex3d(-1, 0, 4);
+    glTexCoord2d(0, 1);
+    glVertex3d(0 , 0, 4);
+    glTexCoord2d(m_height, 1);
+    glVertex3d(0, m_height, 4);
+    glTexCoord2d(m_height, 0);
+    glVertex3d(-1, m_height, 4);
+
+    //limit gauche / ouest - exterieur
+    glTexCoord2d(-1, 0);
+    glVertex3d(-1, -1, 0);
+    glTexCoord2d(-1, 1);
+    glVertex3d(-1 , -1, 4);
+    glTexCoord2d(m_height + 1, 1);
+    glVertex3d(-1, m_height + 1, 4);
+    glTexCoord2d(m_height + 1, 0);
+    glVertex3d(-1, m_height + 1, 0);
+    glEnd();
+    disableTexture();
     glPopMatrix();
     glPopMatrix();
     m_window.Display();
@@ -204,67 +333,78 @@ namespace API
   {
     glMatrixMode(GL_MODELVIEW);
 
+    //draw ground
     glColor3d(255, 255, 255);
     enableTexture("ground");
     glBegin(GL_QUADS);
 
-    glTexCoord2d(width, 0);
-    glVertex3d(width, 0, 0);
-    glTexCoord2d(width, height);
-    glVertex3d(width, height, 0);
-    glTexCoord2d(0, height);
-    glVertex3d(0, height, 0);
+    glTexCoord2d(8000, 0);
+    glVertex3d(4000, -4000, 0);
+    glTexCoord2d(8000, 8000);
+    glVertex3d(4000, 4000, 0);
+    glTexCoord2d(0, 8000);
+    glVertex3d(-4000, 4000, 0);
     glTexCoord2d(0, 0);
-    glVertex3d(0, 0, 0);
+    glVertex3d(-4000, -4000, 0);
 
     glEnd();
+
+    //draw skybox
+    glMatrixMode(GL_TEXTURE);
+    glPushMatrix();
+    glRotatef(180, 0, 0, 1);
+    glTranslatef(0.5, 0, 0);
+    glScalef(2, 1, 0);
+    glMatrixMode(GL_MODELVIEW);
 
     enableTexture("wall");
     glBegin(GL_QUADS);
 
-    glColor3d(255, 255, 0);
+    //mur haut / nord
     glTexCoord2d(1, 0);
-    glVertex3f(width,	height,	0);
+    glVertex3f(1000, 1000, 0);
     glTexCoord2d(1, 1);
-    glVertex3f(width,	height,	20);
+    glVertex3f(1000, 1000, 1038);
     glTexCoord2d(0, 1);
-    glVertex3f(0,	height,	20);
+    glVertex3f(-1000, 1000, 1038);
     glTexCoord2d(0, 0);
-    glVertex3f(0,	height,	0);
+    glVertex3f(-1000, 1000, 0);
 
-    glColor3d(255, 0, 0);
+    //mur gauche / ouest
     glTexCoord2d(0, 0);
-    glVertex3f(0,	height,	0);
+    glVertex3f(-1000, 1000, 0);
     glTexCoord2d(0, 1);
-    glVertex3f(0,	height,	20);
+    glVertex3f(-1000, 1000, 1038);
     glTexCoord2d(1, 1);
-    glVertex3f(0,	0,	20);
+    glVertex3f(-1000, -1000, 1038);
     glTexCoord2d(1, 0);
-    glVertex3f(0,	0,	0);
+    glVertex3f(-1000, -1000, 0);
 
-    glColor3d(0, 255, 255);
+    //mur droit / est
     glTexCoord2d(1, 0);
-    glVertex3f(width,	0,	0);
+    glVertex3f(1000, -1000, 0);
     glTexCoord2d(1, 1);
-    glVertex3f(width,	0,	20);
+    glVertex3f(1000, -1000, 1038);
     glTexCoord2d(0, 1);
-    glVertex3f(width,	height,	20);
+    glVertex3f(1000, 1000, 1038);
     glTexCoord2d(0, 0);
-    glVertex3f(width,	height,	0);
+    glVertex3f(1000, 1000, 0);
 
-    glColor3d(255, 0, 255);
+    //mur bas / sud
     glTexCoord2d(1, 1);
-    glVertex3f(width,	0,	20);
+    glVertex3f( 1000, -1000, 1038);
     glTexCoord2d(1, 0);
-    glVertex3f(width,	0,	0);
+    glVertex3f( 1000, -1000, 0);
     glTexCoord2d(0, 0);
-    glVertex3f(0,	0,	0);
+    glVertex3f(-1000, -1000, 0);
     glTexCoord2d(0, 1);
-    glVertex3f(0,	0,	20);
+    glVertex3f(-1000, -1000, 1038);
 
     glEnd();
-    glColor3d(255, 255, 255);
-    disableTexture();
+
+    glMatrixMode(GL_TEXTURE);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
   }
 
   void	Renderer::loadTexture(const std::string& name, const std::string& filepath)

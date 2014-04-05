@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Fri Apr  4 16:25:13 2014 
+// Last update Sat Apr  5 20:00:46 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -51,6 +51,8 @@ namespace API
   private:
     mutable sf::RenderWindow		m_window;
     std::map<std::string, GLuint>	m_textures;
+    int					m_height;
+    int					m_width;
 
   public:
     std::map<sf::Key::Code, Key::Code>			eventKeyBinds;

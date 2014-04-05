@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Fri Apr  4 13:21:52 2014 
+// Last update Sat Apr  5 18:22:00 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -20,8 +20,8 @@
 class MapObject;
 class IObject;
 
-#define SNAKE_MOVE_NORMAL_PERIOD	(20.f)
-#define SNAKE_MOVE_BOOST_PERIOD		(10.f)
+#define SNAKE_MOVE_NORMAL_PERIOD	(100.f)
+#define SNAKE_MOVE_BOOST_PERIOD		(40.f)
 #define SNAKE_BOOST_DEGEN_PERIOD	(10.f)
 #define SNAKE_BOOST_REGEN_PERIOD	(30.f)
 #define	SNAKE_BOOST_MAX			(200.f)
