@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Fri Apr  4 13:21:52 2014 
+// Last update Sat Apr  5 16:36:09 2014 Desabre Quentin
 //
 
 #ifndef SNAKE_HPP
@@ -20,8 +20,8 @@
 class MapObject;
 class IObject;
 
-#define SNAKE_MOVE_NORMAL_PERIOD	(20.f)
-#define SNAKE_MOVE_BOOST_PERIOD		(10.f)
+#define SNAKE_MOVE_NORMAL_PERIOD	(60.f)
+#define SNAKE_MOVE_BOOST_PERIOD		(20.f)
 #define SNAKE_BOOST_DEGEN_PERIOD	(10.f)
 #define SNAKE_BOOST_REGEN_PERIOD	(30.f)
 #define	SNAKE_BOOST_MAX			(200.f)
@@ -42,7 +42,7 @@ public:
   void	addElem();
   void	addSkin();
   bool	collideMap(int width, int height) const;
-  bool	collideSnake(int x, int y) const;
+  bool	collideSnake(int x, int y, int flag) const;
 
   void	update(int width, int height, const MapObject& mapObject);
   void	updateCam(Renderer& renderer) const;
@@ -50,6 +50,7 @@ public:
 
   void	addScore(int score);
   int	getScore() const;
+  int	getBoost() const;
 
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
@@ -61,6 +62,7 @@ private:
   Vector2i			m_size;
   bool				m_alive;
   bool				m_isFed;
+  int				m_firstRun;
   Timer				m_moveTimer;
   int				m_movePeriod;
   Timer				m_boostTimer;
