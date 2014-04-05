@@ -5,12 +5,12 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Thu Apr  3 14:03:33 2014 guerot_a
+## Last update Sat Apr  5 22:39:07 2014 
 ##
 
 ## FILES
 
-NAME		=	lib_nibbler_sfml16.so
+NAME		=	lib_nibbler_caca.so
 
 SRC		=	Renderer
 
@@ -29,17 +29,16 @@ DINC		=	include				\
 			../shared/include
 
 CFLAGS		=	-Wall		\
-			-Wextra
+			-Wextra		\
+			`caca-config --cflags`
 
 ## LINKAGE
 
-LIB		=	sfml-graphics	\
-			sfml-system	\
-			sfml-window
+LIB		=
 
 DLIB		=
 
-LDFLAGS		=
+LDFLAGS		=	`caca-config --libs`
 
 ## RUNS
 

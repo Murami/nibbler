@@ -5,18 +5,17 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Fri Apr  4 21:09:16 2014 Desabre Quentin
+// Last update Sat Apr  5 23:15:59 2014 
 //
 
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
-#include <SFML/Graphics.hpp>
+#include <map>
+#include <caca.h>
 #include "IRenderer.hpp"
 
-#define TILESIZE	50
-#define NB_TILEY	10
-#define NB_TILEX	10
+typedef enum caca_key caca_key;
 
 namespace API
 {
@@ -36,8 +35,6 @@ namespace API
     //init
 
     void	initWindow(int, int);
-    void	initSprite();
-    void	initRessource();
     void	initBinds();
 
     //game draws
@@ -48,20 +45,14 @@ namespace API
     void	drawScore(int score) const;
     void	drawBoost(int boost, int boostmax) const;
 
-    // misc
-
-    std::string	toString(int) const;
-
   private:
-    mutable sf::RenderWindow		m_window;
-    std::map<std::string, sf::Image>	m_tiles;
-    sf::Shape				m_hud;
-    sf::Shape				m_boost;
-    sf::Font				m_font;
+    caca_canvas_t*	m_canvas;
+    caca_display_t*	m_display;
+    bool		m_open;
 
   public:
-    std::map<sf::Key::Code, Key::Code>			eventKeyBinds;
-    std::map<sf::Event::EventType, Event::EventType>	eventBinds;
+    std::map<caca_key, Key::Code>		eventKeyBinds;
+    std::map<caca_event_type, Event::EventType>	eventBinds;
   };
 };
 

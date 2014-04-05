@@ -5,9 +5,10 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Fri Mar 28 19:15:55 2014 guerot_a
-// Last update Wed Apr  2 11:16:46 2014 guerot_a
+// Last update Sun Apr  6 00:03:39 2014 
 //
 
+#include <unistd.h>
 #include <exception>
 #include <stdexcept>
 #include <iostream>
@@ -31,6 +32,7 @@ Game::~Game()
 void	Game::run()
 {
   API::Event	event;
+  Timer		gametimer;
 
   while (m_alive)
     {
@@ -40,6 +42,11 @@ void	Game::run()
       	    throw std::runtime_error("game manager is not setted");
       	  m_manager->handleEvent(event);
       	}
+      if (gametimer.getElapsedTime() < GAME_FRAME_PERIOD)
+	{
+	  usleep((GAME_FRAME_PERIOD - gametimer.getElapsedTime()) * 1000);
+	  gametimer.reset();
+	}
       m_manager->update();
       m_manager->draw();
     }
