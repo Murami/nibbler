@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sun Apr  6 04:04:51 2014 
+// Last update Sun Apr  6 10:54:24 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -85,6 +85,7 @@ namespace API
     std::map<std::string, GLuint>	m_textures;
     int					m_height;
     int					m_width;
+    sf::Font				m_font;
     std::map<sf::Key::Code, Key::Code>				eventKeyBinds;
     std::map<sf::Event::EventType, Event::EventType>		eventBinds;
     std::map<std::string, void (Renderer::*)(int, int, int)>	m_drawMethods;

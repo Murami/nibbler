@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 10:27:03 2014 
+// Last update Sun Apr  6 11:12:58 2014 
 //
 
 #include <exception>
@@ -25,8 +25,8 @@ namespace API
     initGL();
     initRessources();
     initBinds();
+    m_window.PreserveOpenGLStates(true);
   }
-
 
   Renderer::~Renderer()
   {
@@ -143,14 +143,31 @@ namespace API
 
   void	Renderer::drawBoost(int boost, int boostmax) const
   {
-    (void) boost;
-    (void) boostmax;
+    sf::String	str;
+
+    str.SetFont(m_font);
+    str.SetSize(50);
+    str.SetColor(sf::Color(255, 100, 100));
+    str.Move(1000, 10);
+    str.SetText(std::string("Boost : " + toString(boost * 100 / boostmax)));
+    m_window.Draw(str);
   }
 
   void	Renderer::drawScore(int score) const
   {
-    (void) score;
+    sf::String	str;
+
+    str.SetFont(m_font);
+    str.SetSize(50);
+    str.SetColor(sf::Color(255, 100, 100));
+    str.Move(70, 10);
+    str.SetText(std::string("Score : " + toString(score)));
+    m_window.Draw(str);
   }
+
+  ////////////////////////
+  // GL STATES HANDLERS //
+  ////////////////////////
 
   ///////////
   // INITS //
@@ -211,6 +228,8 @@ namespace API
 	str = toString(i);
 	m_textures[str] = m_textures["head"];
       }
+    if (!m_font.LoadFromFile("./sfml/assets/TechnoHideo.ttf"))
+      throw std::runtime_error("Couldn't load .ttf");
    }
 
   void	Renderer::initBinds()
