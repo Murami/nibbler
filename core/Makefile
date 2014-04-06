@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Apr  6 09:55:39 2014 
+## Last update Sun Apr  6 20:25:03 2014 
 ##
 
 ## FILES
@@ -15,7 +15,6 @@ NAME		=	nibbler
 SRC		=	main			\
 			Game			\
 			ManagerGame		\
-			ManagerGamePauseOverlay	\
 			Renderer		\
 			Snake			\
 			Timer			\
