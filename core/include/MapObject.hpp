@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:02:07 2014 guerot_a
-// Last update Sun Apr  6 02:46:43 2014 Desabre Quentin
+// Last update Sun Apr  6 11:34:56 2014 
 //
 
 #ifndef MAP_OBJECT_HPP
@@ -14,7 +14,7 @@
 #include "Timer.hpp"
 #include "ObjectFactory.hpp"
 
-#define OBJECT_CREATION_PERIOD	(1000.f)
+#define OBJECT_CREATION_PERIOD	(10000.f)
 
 class Renderer;
 class Snake;

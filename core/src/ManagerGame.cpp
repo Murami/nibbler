@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 17:25:21 2014 guerot_a
-// Last update Sat Apr  5 20:10:53 2014 
+// Last update Sun Apr  6 11:41:27 2014 
 //
 
 #include <iostream>
@@ -55,6 +55,8 @@ void	Game::ManagerGame::update()
 {
   m_snake.update(m_game.m_width, m_game.m_height, m_mapObject);
   m_mapObject.update(m_game.m_width, m_game.m_height, m_snake);
+  if (!m_snake.alive())
+    m_game.m_alive = false;
 }
 
 void	Game::ManagerGame::draw() const

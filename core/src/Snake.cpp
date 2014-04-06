@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 05:11:34 2014 quentin desabre
-// Last update Sun Apr  6 11:34:04 2014 
+// Last update Sun Apr  6 11:40:42 2014 
 //
 
 #include <cstdlib>
@@ -272,4 +272,9 @@ void	Snake::setNbLimb()
 void	Snake::die()
 {
   m_alive = false;
+}
+
+bool	Snake::alive() const
+{
+  return (m_alive);
 }

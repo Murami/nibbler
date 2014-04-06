@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 05:10:19 2014 quentin desabre
-// Last update Sun Apr  6 05:29:14 2014 
+// Last update Sun Apr  6 11:38:12 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -61,6 +61,7 @@ public:
   void	setNbLimb();
   void	setInvertBoost();
   void	die();
+  bool	alive() const;
 
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
