@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 04:53:56 2014 Desabre Quentin
+// Last update Sun Apr  6 09:08:03 2014 Desabre Quentin
 //
 
 #include <exception>
@@ -78,6 +78,11 @@ namespace API
       }
     m_tiles["head"].LoadFromFile("./sfml/assets/sprites/head_1.png");
     m_tiles["apple"].LoadFromFile("./sfml/assets/sprites/apple.png");
+    m_tiles["invul"].LoadFromFile("./sfml/assets/sprites/invul.png");
+    m_tiles["mulScore"].LoadFromFile("./sfml/assets/sprites/mul.png");
+    m_tiles["mulLimb"].LoadFromFile("./sfml/assets/sprites/mulLimb.png");
+    m_tiles["invertBoost"].LoadFromFile("./sfml/assets/sprites/boost.png");
+    m_tiles["wall"].LoadFromFile("./sfml/assets/sprites/wall.png");
   }
 
   void	Renderer::initBinds()

@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Sun Apr  6 05:15:27 2014 Desabre Quentin
+// Last update Sun Apr  6 09:09:18 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -26,10 +26,10 @@ MapObject::MapObject()
   srand(time(NULL));
 
   m_objectFactory.learn("NormalFood", new NormalFood);
-  // m_objectFactory.learn("Invul", new Invul);
-  // m_objectFactory.learn("MulScore", new MulScore);
+  m_objectFactory.learn("Invul", new Invul);
+  m_objectFactory.learn("MulScore", new MulScore);
   m_objectFactory.learn("MulLimb", new MulLimb);
-  // m_objectFactory.learn("InvertBoost", new InvertBoost);
+  m_objectFactory.learn("InvertBoost", new InvertBoost);
 }
 
 MapObject::~MapObject()
@@ -59,7 +59,6 @@ void	MapObject::update(int width, int height, const Snake& snake)
       m_objectCreationTimer.reset();
     }
 
-  //create a food if there are no one on the map
   bool	haveFood = false;
 
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
