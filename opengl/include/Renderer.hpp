@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sun Apr  6 00:12:57 2014 
+// Last update Sun Apr  6 04:04:51 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -16,10 +16,6 @@
 #include <SFML/Graphics.hpp>
 #include "IRenderer.hpp"
 
-#define TILESIZE	50
-#define NB_TILEY	10
-#define NB_TILEX	10
-
 namespace API
 {
   class Renderer : public IRenderer
@@ -28,37 +24,70 @@ namespace API
     Renderer(int x, int y);
     ~Renderer();
 
-    void	initBinds();
-
     bool	getEvent(Event& event) const;
+
     void	close();
     bool	isOpen() const;
+
     void	clear() const;
+
     void	update() const;
     void	updateCam(int x, int y, int xdir, int ydir);
 
-    //game draws
-
-    void	draw(const std::string& ressource, int x, int y,
-		     int rotation) const;
+    void	draw(const std::string& ressource, int x, int y, int rotation) const;
     void	drawBackground(int width, int height) const;
     void	drawBoost(int boost, int boostmax) const;
     void	drawScore(int score) const;
 
   private:
+    void	initBinds();
+    void	initRessources();
+    void	initGL();
+    void	initWindow(int x, int y);
+
+    void	drawGround() const;
+
+    void	drawSkybox() const;
+    void	drawSkyboxNorth() const;
+    void	drawSkyboxSouth() const;
+    void	drawSkyboxEst() const;
+    void	drawSkyboxWest() const;
+
+    void	drawLimit() const;
+    void	drawLimitNorthInside() const;
+    void	drawLimitNorthTop() const;
+    void	drawLimitNorthOutside() const;
+    void	drawLimitSouthInside() const;
+    void	drawLimitSouthTop() const;
+    void	drawLimitSouthOutside() const;
+    void	drawLimitEstInside() const;
+    void	drawLimitEstTop() const;
+    void	drawLimitEstOutside() const;
+    void	drawLimitWestInside() const;
+    void	drawLimitWestTop() const;
+    void	drawLimitWestOutside() const;
+
+    void	drawTop(int x, int y) const;
+    void	drawBottom(int x, int y) const;
+    void	drawLeft(int x, int y) const;
+    void	drawRight(int x, int y) const;
+    void	drawBack(int x, int y) const;
+    void	drawFront(int x, int y) const;
+
     void	loadTexture(const std::string& name, const std::string& filepath);
     void	enableTexture(const std::string& name) const;
     void	disableTexture() const;
+
+    std::string	toString(int) const;
 
   private:
     mutable sf::RenderWindow		m_window;
     std::map<std::string, GLuint>	m_textures;
     int					m_height;
     int					m_width;
-
-  public:
-    std::map<sf::Key::Code, Key::Code>			eventKeyBinds;
-    std::map<sf::Event::EventType, Event::EventType>	eventBinds;
+    std::map<sf::Key::Code, Key::Code>				eventKeyBinds;
+    std::map<sf::Event::EventType, Event::EventType>		eventBinds;
+    std::map<std::string, void (Renderer::*)(int, int, int)>	m_drawMethods;
   };
 };
 
