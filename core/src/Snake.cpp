@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 05:11:34 2014 quentin desabre
-// Last update Sun Apr  6 05:11:35 2014 Desabre Quentin
+// Last update Sun Apr  6 05:22:00 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -25,7 +25,7 @@ Snake::Snake() :
   m_nbLimb(1),
   m_mulScore(1),
   m_alive(true),
-  m_isFed(false),
+  m_isFed(0),
   m_isInvul(false),
   m_boostPeriod(SNAKE_MOVE_BOOST_PERIOD)
 {
@@ -76,8 +76,15 @@ void	Snake::turnLeft()
 
 void	Snake::addElem()
 {
-  m_isFed = true;
-  addSkin();
+  int	i;
+
+  i = 0;
+  m_isFed = m_nbLimb;
+  while (i != m_nbLimb)
+    {
+      addSkin();
+      i++;
+    }
 }
 
 void	Snake::addSkin()
@@ -186,7 +193,7 @@ void	Snake::moveSnake(int width, int height, const MapObject& mapObject)
       if (!m_isFed)
 	m_snakeLimbs.pop_back();
       else
-	m_isFed = false;
+	m_isFed--;
       m_snakeLimbs.push_front(Vector2i(m_snakeLimbs.front().x + m_direction.x,
 				       m_snakeLimbs.front().y + m_direction.y));
       mapObject.useObject((m_snakeLimbs.front().x),
@@ -257,6 +264,6 @@ void	Snake::setInvertBoost()
 
 void	Snake::setNbLimb()
 {
-  if(m_nbLimb != 8)
+  if (m_nbLimb != 8)
     m_nbLimb *= 2;
 }
