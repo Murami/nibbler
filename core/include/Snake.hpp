@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Sun Apr  6 04:47:55 2014 
+// Last update Sun Apr  6 05:01:56 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -58,7 +58,7 @@ public:
 
   void	setInvul(bool);
   void	setMulScore();
-  void	setInvertBoost(bool);
+  void	setInvertBoost();
   void	setNbLimb(int);
 
 private:
@@ -79,6 +79,7 @@ private:
   bool				m_alive;
   bool				m_isFed;
   mutable bool		       	m_isInvul;
+  int				m_boostPeriod;
 };
 
 #endif /* SNAKE_HPP */

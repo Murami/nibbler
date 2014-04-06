@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Sun Apr  6 04:43:02 2014
-// Last update Sun Apr  6 04:44:29 2014 
+// Last update Sun Apr  6 05:01:31 2014 
 //
 
 #include <iostream>
@@ -37,7 +37,7 @@ const std::string&	InvertBoost::getType() const
 void	InvertBoost::use(Snake& snake) const
 {
   snake.addScore(25);
-  snake.setInvertBoost(true);
+  snake.setInvertBoost();
   m_used = true;
 }
 
