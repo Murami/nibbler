@@ -4,8 +4,8 @@
 // Made by quentin desabre
 // Login   <desabr_q@epitech.net>
 //
-// Started on  Sun Apr  6 04:52:25 2014 quentin desabre
-// Last update Sun Apr  6 05:02:10 2014 Desabre Quentin
+// Started on  Sun Apr  6 05:11:34 2014 quentin desabre
+// Last update Sun Apr  6 05:11:35 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -26,7 +26,8 @@ Snake::Snake() :
   m_mulScore(1),
   m_alive(true),
   m_isFed(false),
-  m_isInvul(false)
+  m_isInvul(false),
+  m_boostPeriod(SNAKE_MOVE_BOOST_PERIOD)
 {
   m_snakeLimbs.push_back(Vector2i(3, 9));
   m_snakeLimbs.push_back(Vector2i(2, 9));
@@ -45,7 +46,7 @@ Snake::~Snake()
 
 void	Snake::enableBoost()
 {
-  m_movePeriod = SNAKE_MOVE_BOOST_PERIOD;
+  m_movePeriod = m_boostPeriod;
 }
 
 void	Snake::disableBoost()
@@ -246,12 +247,12 @@ void	Snake::setMulScore()
     m_mulScore *= 2;
 }
 
-void	Snake::setInvertBoost(bool b)
+void	Snake::setInvertBoost()
 {
-  if (b)
-    m_movePeriod = SNAKE_MOVE_BOOST_INV_PERIOD;
+  if (m_boostPeriod == SNAKE_MOVE_BOOST_PERIOD)
+    m_boostPeriod = SNAKE_MOVE_BOOST_INV_PERIOD;
   else
-    m_movePeriod = SNAKE_MOVE_BOOST_PERIOD;
+    m_boostPeriod = SNAKE_MOVE_BOOST_PERIOD;
 }
 
 void	Snake::setNbLimb()

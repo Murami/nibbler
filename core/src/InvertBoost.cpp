@@ -1,13 +1,12 @@
 //
-// InvertBoost.cpp for  in /home/otoshigami/rendu/cpp_nibbler
+// InvertBoost.cpp for invertBoost in /home/desabr_q/rendu/cpp_nibbler
 //
-// Made by
-// Login   <otoshigami@epitech.net>
+// Made by quentin desabre
+// Login   <desabr_q@epitech.net>
 //
-// Started on  Sun Apr  6 04:43:02 2014
-// Last update Sun Apr  6 04:55:09 2014 Desabre Quentin
+// Started on  Sun Apr  6 05:11:13 2014 quentin desabre
+// Last update Sun Apr  6 05:11:13 2014 Desabre Quentin
 //
-
 #include <iostream>
 #include "InvertBoost.hpp"
 #include "Snake.hpp"
@@ -37,7 +36,7 @@ const std::string&	InvertBoost::getType() const
 void	InvertBoost::use(Snake& snake) const
 {
   snake.addScore(25);
-  snake.setInvertBoost(true);
+  snake.setInvertBoost();
   m_used = true;
 }
 

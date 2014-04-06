@@ -1,11 +1,11 @@
 //
-// Snake.hpp for  in /home/guerot_a/rendu/cpp_nibbler/core
+// Snake.hpp for snake in /home/desabr_q/rendu/cpp_nibbler
 //
-// Made by guerot_a
-// Login   <guerot_a@epitech.net>
+// Made by quentin desabre
+// Login   <desabr_q@epitech.net>
 //
-// Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Sun Apr  6 05:03:40 2014 Desabre Quentin
+// Started on  Sun Apr  6 05:10:19 2014 quentin desabre
+// Last update Sun Apr  6 05:10:52 2014 Desabre Quentin
 //
 
 #ifndef SNAKE_HPP
@@ -58,8 +58,8 @@ public:
 
   void	setInvul(bool);
   void	setMulScore();
-  void	setInvertBoost(bool);
   void	setNbLimb();
+  void	setInvertBoost();
 
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
@@ -79,6 +79,7 @@ private:
   bool				m_alive;
   bool				m_isFed;
   mutable bool		       	m_isInvul;
+  int				m_boostPeriod;
 };
 
 #endif /* SNAKE_HPP */
