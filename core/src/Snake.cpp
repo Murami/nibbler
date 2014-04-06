@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Sun Apr  6 02:55:19 2014 Desabre Quentin
+// Last update Sun Apr  6 04:34:06 2014 
 //
 
 #include <cstdlib>
@@ -24,7 +24,6 @@ Snake::Snake() :
   m_score(0),
   m_nbLimb(1),
   m_mulScore(1),
-  m_invertBoost(false),
   m_alive(true),
   m_isFed(false),
   m_isInvul(false)
@@ -56,7 +55,8 @@ void	Snake::disableBoost()
 
 bool	Snake::boostEnabled()
 {
-  return (m_movePeriod == SNAKE_MOVE_BOOST_PERIOD);
+  return (m_movePeriod == SNAKE_MOVE_BOOST_PERIOD ||
+	  m_movePeriod == SNAKE_MOVE_BOOST_INV_PERIOD);
 }
 
 void	Snake::turnRight()
@@ -245,7 +245,10 @@ void	Snake::setMulScore()
 
 void	Snake::setInvertBoost(bool b)
 {
-  m_invertBoost = b;
+  if (b)
+    m_movePeriod = SNAKE_MOVE_BOOST_INV_PERIOD;
+  else
+    m_movePeriod = SNAKE_MOVE_BOOST_PERIOD;
 }
 
 void	Snake::setNbLimb(int nb)

@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 02:07:57 2014 quentin desabre
-// Last update Sun Apr  6 02:52:30 2014 Desabre Quentin
+// Last update Sun Apr  6 04:44:23 2014 
 //
 
 #include <iostream>
@@ -37,7 +37,6 @@ const std::string&	Invul::getType() const
 void	Invul::use(Snake& snake) const
 {
   snake.addScore(25);
-  snake.addElem();
   snake.setInvul(true);
   m_used = true;
 }
