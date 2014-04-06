@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Sat Mar 29 18:05:23 2014 guerot_a
-// Last update Tue Apr  1 15:09:24 2014 Desabre Quentin
+// Last update Sun Apr  6 22:53:11 2014 
 //
 
 #include <exception>
@@ -18,8 +18,12 @@ int	Renderer::m_nbInstance = 0;
 Renderer::Renderer(const std::string& libpath, int width, int height)
 {
   API::IRenderer*	(*factory)(int, int);
+  std::string		path;
 
-  m_libhandle = dlopen(libpath.c_str(), RTLD_LAZY);
+  path = libpath;
+  if (path.compare(0, 2, "./") != 0 && path.compare(0, 1, "/") != 0)
+    path = "./" + path;
+  m_libhandle = dlopen(path.c_str(), RTLD_LAZY);
   if (!m_libhandle)
     throw std::runtime_error(dlerror());
   factory = (API::IRenderer* (*)(int, int))(dlsym(m_libhandle, "createRenderer"));
