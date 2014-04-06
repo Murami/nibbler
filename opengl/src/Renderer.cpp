@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 04:09:13 2014 
+// Last update Sun Apr  6 10:27:03 2014 
 //
 
 #include <exception>
@@ -107,7 +107,14 @@ namespace API
   {
     (void) rotation;
 
+    glDisable(GL_BLEND);
     enableTexture(ressource);
+
+    glMatrixMode(GL_TEXTURE);
+    glPushMatrix();
+    // glRotatef(180, 0, 0, 1);
+    glScalef(1, -1, 0);
+    glMatrixMode(GL_MODELVIEW);
 
     glBegin(GL_QUADS);
     drawTop(x, y);
@@ -118,7 +125,12 @@ namespace API
     drawFront(x, y);
     glEnd();
 
+    glMatrixMode(GL_TEXTURE);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
     disableTexture();
+    glEnable(GL_BLEND);
   }
 
   void	Renderer::drawBackground(int width, int height) const
@@ -181,24 +193,25 @@ namespace API
 
   void	Renderer::initRessources()
   {
-
-    int			i;
     std::string		str;
 
-    i = 1;
     loadTexture("head", "opengl/assets/sprites/snake.jpg");
-    while (i <= 48)
+    loadTexture("apple", "opengl/assets/sprites/apple.png");
+    loadTexture("invul", "opengl/assets/sprites/invul.png");
+    loadTexture("mulScore", "opengl/assets/sprites/mul.png");
+    loadTexture("mul", "opengl/assets/sprites/mul.png");
+    loadTexture("mulLimb", "opengl/assets/sprites/mulLimb.png");
+    loadTexture("wall", "opengl/assets/sprites/wall.png");
+    loadTexture("invertBoost", "opengl/assets/sprites/boost.png");
+    loadTexture("ground", "opengl/assets/sprites/ground.bmp");
+    loadTexture("skybox", "opengl/assets/sprites/skybox2.png");
+    loadTexture("limit", "opengl/assets/sprites/limit.png");
+    for (int i = 0; i <= 48; i++)
       {
 	str = toString(i);
 	m_textures[str] = m_textures["head"];
-	i++;
       }
-    loadTexture("apple", "opengl/assets/sprites/snake.jpg");
-    loadTexture("ground", "opengl/assets/sprites/ground.bmp");
-    loadTexture("wall", "opengl/assets/sprites/skybox2.png");
-    loadTexture("snake", "opengl/assets/sprites/snake.jpg");
-    loadTexture("limit", "opengl/assets/sprites/limit.png");
-  }
+   }
 
   void	Renderer::initBinds()
   {
@@ -412,7 +425,7 @@ namespace API
     glTranslatef(0.5, 0, 0);
     glScalef(2, 1, 0);
     glMatrixMode(GL_MODELVIEW);
-    enableTexture("wall");
+    enableTexture("skybox");
 
     glBegin(GL_QUADS);
     drawSkyboxNorth();
