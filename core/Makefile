@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Apr  6 05:03:56 2014 Desabre Quentin
+## Last update Sun Apr  6 09:11:01 2014 Desabre Quentin
 ##
 
 ## FILES
@@ -26,7 +26,7 @@ SRC		=	main			\
 			MulLimb			\
 			Invul			\
 			Command			\
-			InvertBoost
+			InvertBoost		\
 
 SRC_EXT		=	.cpp
 

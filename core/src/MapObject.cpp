@@ -1,11 +1,11 @@
 //
-// MapObject.cpp for  in /home/guerot_a/rendu/cpp_nibbler/core
+// MapObject.cpp for map in /home/desabr_q/rendu/cpp_nibbler
 //
-// Made by guerot_a
-// Login   <guerot_a@epitech.net>
+// Made by quentin desabre
+// Login   <desabr_q@epitech.net>
 //
-// Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Sun Apr  6 09:09:18 2014 Desabre Quentin
+// Started on  Sun Apr  6 09:10:25 2014 quentin desabre
+// Last update Sun Apr  6 09:10:40 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -16,6 +16,7 @@
 #include "MulScore.hpp"
 #include "MulLimb.hpp"
 #include "InvertBoost.hpp"
+// #include "Wall.hpp"
 #include "IObject.hpp"
 #include "Renderer.hpp"
 #include "MapObject.hpp"
@@ -30,6 +31,7 @@ MapObject::MapObject()
   m_objectFactory.learn("MulScore", new MulScore);
   m_objectFactory.learn("MulLimb", new MulLimb);
   m_objectFactory.learn("InvertBoost", new InvertBoost);
+  // m_objectFactory.learn("Wall", new Wall);
 }
 
 MapObject::~MapObject()
@@ -60,7 +62,6 @@ void	MapObject::update(int width, int height, const Snake& snake)
     }
 
   bool	haveFood = false;
-
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
     {
       if ((*it)->getType() == "NormalFood")

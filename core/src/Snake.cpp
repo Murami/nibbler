@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 05:11:34 2014 quentin desabre
-// Last update Sun Apr  6 05:22:00 2014 Desabre Quentin
+// Last update Sun Apr  6 05:31:13 2014 
 //
 
 #include <cstdlib>
@@ -266,4 +266,9 @@ void	Snake::setNbLimb()
 {
   if (m_nbLimb != 8)
     m_nbLimb *= 2;
+}
+
+void	Snake::die()
+{
+  m_alive = false;
 }
