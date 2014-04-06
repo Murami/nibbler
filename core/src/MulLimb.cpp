@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 02:50:49 2014 quentin desabre
-// Last update Sun Apr  6 05:01:50 2014 Desabre Quentin
+// Last update Sun Apr  6 05:23:50 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -36,7 +36,7 @@ const std::string&	MulLimb::getType() const
 
 void	MulLimb::use(Snake& snake) const
 {
-  snake.addScore(25);
+  snake.addScore(250);
   snake.setNbLimb();
   m_used = true;
 }

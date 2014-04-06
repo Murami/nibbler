@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Sun Apr  6 05:28:44 2014 
+// Last update Sun Apr  6 05:30:01 2014 
 //
 
 #include <iostream>
@@ -61,9 +61,7 @@ void	MapObject::update(int width, int height, const Snake& snake)
       m_objectCreationTimer.reset();
     }
 
-  //create a food if there are no one on the map
   bool	haveFood = false;
-
   for (it = m_objectList.begin(); it < m_objectList.end(); it++)
     {
       if ((*it)->getType() == "NormalFood")
