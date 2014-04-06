@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 02:50:49 2014 quentin desabre
-// Last update Sun Apr  6 02:54:58 2014 Desabre Quentin
+// Last update Sun Apr  6 05:08:30 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -49,7 +49,7 @@ bool	MulScore::obsolete() const
 
 void	MulScore::draw(const Renderer& renderer) const
 {
-  renderer->draw("head", m_x, m_y, 0);
+  renderer->draw("mulScore", m_x, m_y, 0);
 }
 
 bool	MulScore::collide(int x, int y) const

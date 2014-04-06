@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Sun Apr  6 04:43:02 2014
-// Last update Sun Apr  6 04:44:29 2014 
+// Last update Sun Apr  6 04:55:09 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -48,7 +48,7 @@ bool	InvertBoost::obsolete() const
 
 void	InvertBoost::draw(const Renderer& renderer) const
 {
-  renderer->draw("head", m_x, m_y, 0);
+  renderer->draw("invertBoost", m_x, m_y, 0);
 }
 
 bool	InvertBoost::collide(int x, int y) const

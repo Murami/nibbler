@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Sun Apr  6 04:48:34 2014 
+// Last update Sun Apr  6 05:09:02 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -14,6 +14,7 @@
 #include "NormalFood.hpp"
 #include "Invul.hpp"
 #include "MulScore.hpp"
+#include "MulLimb.hpp"
 #include "InvertBoost.hpp"
 #include "IObject.hpp"
 #include "Renderer.hpp"
@@ -27,6 +28,7 @@ MapObject::MapObject()
   m_objectFactory.learn("NormalFood", new NormalFood);
   m_objectFactory.learn("Invul", new Invul);
   m_objectFactory.learn("MulScore", new MulScore);
+  m_objectFactory.learn("MulLimb", new MulLimb);
   m_objectFactory.learn("InvertBoost", new InvertBoost);
 }
 

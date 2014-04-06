@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 04:52:25 2014 quentin desabre
-// Last update Sun Apr  6 04:52:25 2014 Desabre Quentin
+// Last update Sun Apr  6 05:02:10 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -242,7 +242,8 @@ void	Snake::setInvul(bool b)
 
 void	Snake::setMulScore()
 {
-  m_mulScore *= 2;
+  if (m_mulScore != 32)
+    m_mulScore *= 2;
 }
 
 void	Snake::setInvertBoost(bool b)
@@ -253,7 +254,8 @@ void	Snake::setInvertBoost(bool b)
     m_movePeriod = SNAKE_MOVE_BOOST_PERIOD;
 }
 
-void	Snake::setNbLimb(int nb)
+void	Snake::setNbLimb()
 {
-  m_nbLimb = nb;
+  if(m_nbLimb != 8)
+    m_nbLimb *= 2;
 }

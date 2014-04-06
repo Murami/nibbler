@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 02:07:57 2014 quentin desabre
-// Last update Sun Apr  6 04:44:23 2014 
+// Last update Sun Apr  6 04:54:43 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -48,7 +48,7 @@ bool	Invul::obsolete() const
 
 void	Invul::draw(const Renderer& renderer) const
 {
-  renderer->draw("head", m_x, m_y, 0);
+  renderer->draw("invul", m_x, m_y, 0);
 }
 
 bool	Invul::collide(int x, int y) const

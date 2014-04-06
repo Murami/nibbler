@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Apr  6 04:45:48 2014 
+## Last update Sun Apr  6 05:03:56 2014 Desabre Quentin
 ##
 
 ## FILES
@@ -23,6 +23,7 @@ SRC		=	main			\
 			ObjectFactory		\
 			MapObject		\
 			MulScore		\
+			MulLimb			\
 			Invul			\
 			Command			\
 			InvertBoost
