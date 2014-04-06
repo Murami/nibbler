@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 05:33:02 2014 
+// Last update Sun Apr  6 12:49:54 2014 
 //
 
 #include <iostream>
@@ -20,6 +20,10 @@ namespace API
   Renderer::Renderer(int width, int height)
   {
     m_open = true;
+
+    if (width > 200 || height > 200 || width < 15 || height < 15)
+      throw std::runtime_error("Map must be inferior than 200x200 and superior than 15x15");
+
     initWindow(width * 2, height + 1);
     initBinds();
     initRessource();

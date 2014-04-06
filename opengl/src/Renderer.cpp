@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 11:19:56 2014 
+// Last update Sun Apr  6 12:49:33 2014 
 //
 
 #include <exception>
@@ -179,8 +179,8 @@ namespace API
   {
     sf::WindowSettings	settings;
 
-    if (width > 200 || height > 200)
-      throw std::runtime_error("cannot create a windows with a size higher than 200x200");
+    if (width > 200 || height > 200 || width < 15 || height < 15)
+      throw std::runtime_error("Map must be inferior than 200x200 and superior than 15x15");
 
     settings.DepthBits = 24;
     settings.StencilBits = 8;

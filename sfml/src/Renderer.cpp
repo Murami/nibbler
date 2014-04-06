@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 11:22:23 2014 
+// Last update Sun Apr  6 12:48:44 2014 
 //
 
 #include <exception>
@@ -50,8 +50,8 @@ namespace API
 
   void	Renderer::initWindow(int width, int height)
   {
-    if (width > 200 || height > 200)
-      throw std::runtime_error("Map must be inferior than 200x200");
+    if (width > 200 || height > 200 || width < 15 || height < 15)
+      throw std::runtime_error("Map must be inferior than 200x200 and superior than 15x15");
     m_window.Create(sf::VideoMode(width * TILESIZE, (height + 1) * TILESIZE), "Nibbler", sf::Style::Close);
     m_window.SetFramerateLimit(0);
     m_window.EnableKeyRepeat(false);
