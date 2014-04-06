@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sat Apr  5 22:55:15 2014 
+// Last update Sun Apr  6 04:53:56 2014 Desabre Quentin
 //
 
 #include <exception>
@@ -167,6 +167,8 @@ namespace API
 
   void	Renderer::drawBackground(int x, int y) const
   {
+    (void) x;
+    (void) y;
     m_window.Draw(m_hud);
   }
 
