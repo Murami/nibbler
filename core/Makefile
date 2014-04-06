@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Apr  6 09:11:01 2014 Desabre Quentin
+## Last update Sun Apr  6 09:55:39 2014 
 ##
 
 ## FILES
@@ -27,6 +27,7 @@ SRC		=	main			\
 			Invul			\
 			Command			\
 			InvertBoost		\
+			Wall
 
 SRC_EXT		=	.cpp
 

@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 05:08:43 2014 Desabre Quentin
+// Last update Sun Apr  6 05:33:02 2014 
 //
 
 #include <iostream>
@@ -78,6 +78,7 @@ namespace API
     m_ressources["mulScore"] = CACA_LIGHTGRAY;
     m_ressources["mulLimb"] = CACA_DARKGRAY;
     m_ressources["invertBoost"] = CACA_LIGHTBLUE;
+    m_ressources["wall"] = CACA_BLACK;
   }
 
   void	Renderer::close()
