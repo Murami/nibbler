@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 04:14:34 2014 Desabre Quentin
+// Last update Sun Apr  6 04:46:24 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -73,6 +73,7 @@ namespace API
 	i++;
       }
     m_ressources["apple"] = CACA_RED;
+    m_ressources["head"] = CACA_GREEN;
     m_ressources["head"] = CACA_GREEN;
   }
 

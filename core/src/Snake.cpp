@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Sun Apr  6 02:55:19 2014 Desabre Quentin
+// Last update Sun Apr  6 04:23:42 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -91,12 +91,14 @@ void	Snake::checkBoost()
 {
   int	boostDelta;
 
-  if (m_boost == 0)
+  if (m_boost <= 0)
     disableBoost();
   if (boostEnabled())
     {
       boostDelta = m_boostTimer.getElapsedTime() / SNAKE_BOOST_DEGEN_PERIOD;
       m_boost -= boostDelta;
+      if (m_boost <= 0)
+	m_boost = 0;
     }
   else
     {
