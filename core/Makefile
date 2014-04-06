@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Sun Apr  6 02:56:32 2014 Desabre Quentin
+## Last update Sun Apr  6 04:45:48 2014 
 ##
 
 ## FILES
@@ -24,7 +24,8 @@ SRC		=	main			\
 			MapObject		\
 			MulScore		\
 			Invul			\
-			Command
+			Command			\
+			InvertBoost
 
 SRC_EXT		=	.cpp
 

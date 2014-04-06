@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Sun Apr  6 02:55:35 2014 Desabre Quentin
+// Last update Sun Apr  6 04:47:55 2014 
 //
 
 #ifndef SNAKE_HPP
@@ -25,6 +25,7 @@ class IObject;
 #define SNAKE_BOOST_DEGEN_PERIOD	(10.f)
 #define SNAKE_BOOST_REGEN_PERIOD	(30.f)
 #define	SNAKE_BOOST_MAX			(200.f)
+#define SNAKE_MOVE_BOOST_INV_PERIOD	(180.f)
 
 class Snake
 {
@@ -75,7 +76,6 @@ private:
   int				m_score;
   int				m_nbLimb;
   int				m_mulScore;
-  bool				m_invertBoost;
   bool				m_alive;
   bool				m_isFed;
   mutable bool		       	m_isInvul;
