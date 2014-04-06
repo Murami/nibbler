@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 11:12:58 2014 
+// Last update Sun Apr  6 11:19:56 2014 
 //
 
 #include <exception>
@@ -21,6 +21,8 @@ namespace API
     m_height(height),
     m_width(width)
   {
+    if (!getenv("DISPLAY"))
+      throw (std::runtime_error("cannot load the display"));
     initWindow(width, height);
     initGL();
     initRessources();
