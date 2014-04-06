@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Wed Apr  2 11:00:05 2014 guerot_a
+## Last update Sun Apr  6 02:56:32 2014 Desabre Quentin
 ##
 
 ## FILES
@@ -22,6 +22,8 @@ SRC		=	main			\
 			NormalFood		\
 			ObjectFactory		\
 			MapObject		\
+			MulScore		\
+			Invul			\
 			Command
 
 SRC_EXT		=	.cpp

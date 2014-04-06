@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:21 2014 guerot_a
-// Last update Sat Apr  5 16:28:38 2014 Desabre Quentin
+// Last update Sun Apr  6 02:55:19 2014 Desabre Quentin
 //
 
 #include <cstdlib>
@@ -18,12 +18,16 @@
 
 Snake::Snake() :
   m_direction(1, 0),
-  m_alive(true),
-  m_isFed(false),
   m_firstRun(0),
   m_movePeriod(SNAKE_MOVE_NORMAL_PERIOD),
   m_boost(SNAKE_BOOST_MAX),
-  m_score(0)
+  m_score(0),
+  m_nbLimb(1),
+  m_mulScore(1),
+  m_invertBoost(false),
+  m_alive(true),
+  m_isFed(false),
+  m_isInvul(false)
 {
   m_snakeLimbs.push_back(Vector2i(3, 9));
   m_snakeLimbs.push_back(Vector2i(2, 9));
@@ -83,24 +87,12 @@ void	Snake::addSkin()
   m_skinLimbs.push_back(ss.str());
 }
 
-#include <unistd.h>
-
-void	Snake::update(int width, int height, const MapObject& mapObject)
+void	Snake::checkBoost()
 {
-  int	nbMove;
   int	boostDelta;
-
-  if (!m_alive)
-    return;
-  if (m_firstRun <= 10)
-    {
-      m_firstRun++;
-      m_moveTimer.reset();
-    }
 
   if (m_boost == 0)
     disableBoost();
-
   if (boostEnabled())
     {
       boostDelta = m_boostTimer.getElapsedTime() / SNAKE_BOOST_DEGEN_PERIOD;
@@ -115,6 +107,11 @@ void	Snake::update(int width, int height, const MapObject& mapObject)
     }
   if (boostDelta)
     m_boostTimer.reset();
+}
+
+void	Snake::checkMove(int width, int height, const MapObject& mapObject)
+{
+  int	nbMove;
 
   nbMove = m_moveTimer.getElapsedTime() / m_movePeriod;
   if (nbMove)
@@ -126,6 +123,19 @@ void	Snake::update(int width, int height, const MapObject& mapObject)
       moveSnake(width, height, mapObject);
       nbMove--;
     }
+}
+
+void	Snake::update(int width, int height, const MapObject& mapObject)
+{
+  if (!m_alive)
+    return;
+  if (m_firstRun <= 10)
+    {
+      m_firstRun++;
+      m_moveTimer.reset();
+    }
+  checkBoost();
+  checkMove(width, height, mapObject);
 }
 
 bool	Snake::collideMap(int x, int y) const
@@ -148,7 +158,14 @@ bool	Snake::collideSnake(int x, int y, int flag) const
   while (it != m_snakeLimbs.end())
     {
       if ((*it).x == x && (*it).y == y)
-	return true;
+	{
+	  if (m_isInvul)
+	    {
+	      m_isInvul = false;
+	      return false;
+	    }
+	  return true;
+	}
       it++;
     }
   return false;
@@ -203,7 +220,7 @@ void	Snake::draw(const Renderer& renderer) const
 
 void	Snake::addScore(int score)
 {
-  m_score += score;
+  m_score += (score * m_mulScore);
 }
 
 int	Snake::getScore() const
@@ -214,4 +231,24 @@ int	Snake::getScore() const
 int	Snake::getBoost() const
 {
   return (m_boost);
+}
+
+void	Snake::setInvul(bool b)
+{
+  m_isInvul = b;
+}
+
+void	Snake::setMulScore()
+{
+  m_mulScore *= 2;
+}
+
+void	Snake::setInvertBoost(bool b)
+{
+  m_invertBoost = b;
+}
+
+void	Snake::setNbLimb(int nb)
+{
+  m_nbLimb = nb;
 }

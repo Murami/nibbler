@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Thu Mar 27 14:43:54 2014 guerot_a
-// Last update Sat Apr  5 20:10:34 2014 
+// Last update Sun Apr  6 02:55:35 2014 Desabre Quentin
 //
 
 #ifndef SNAKE_HPP
@@ -44,6 +44,9 @@ public:
   bool	collideMap(int width, int height) const;
   bool	collideSnake(int x, int y, int flag) const;
 
+  void	checkBoost();
+  void	checkMove(int width, int height, const MapObject& mapObject);
+
   void	update(int width, int height, const MapObject& mapObject);
   void	updateCam(Renderer& renderer) const;
   void	draw(const Renderer& renderer) const;
@@ -52,6 +55,11 @@ public:
   int	getScore() const;
   int	getBoost() const;
 
+  void	setInvul(bool);
+  void	setMulScore();
+  void	setInvertBoost(bool);
+  void	setNbLimb(int);
+
 private:
   void	moveSnake(int width, int height, const MapObject& mapObject);
 
@@ -59,15 +67,18 @@ private:
   std::list<Vector2i>		m_snakeLimbs;
   std::vector<std::string>	m_skinLimbs;
   Vector2i			m_direction;
-  Vector2i			m_size;
-  bool				m_alive;
-  bool				m_isFed;
-  int				m_firstRun;
-  Timer				m_moveTimer;
-  int				m_movePeriod;
   Timer				m_boostTimer;
+  Timer				m_moveTimer;
+  int				m_firstRun;
+  int				m_movePeriod;
   int				m_boost;
   int				m_score;
+  int				m_nbLimb;
+  int				m_mulScore;
+  bool				m_invertBoost;
+  bool				m_alive;
+  bool				m_isFed;
+  mutable bool		       	m_isInvul;
 };
 
 #endif /* SNAKE_HPP */
