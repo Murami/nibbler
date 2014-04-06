@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 12:49:54 2014 
+// Last update Sun Apr  6 20:27:39 2014 
 //
 
 #include <iostream>
@@ -127,7 +127,6 @@ namespace API
   void	Renderer::clear() const
   {
     cucul_set_color_ansi(m_canvas, CACA_BLACK, CACA_WHITE);
-    // caca_set_color_ansi(m_canvas, CACA_BLACK, CACA_WHITE);
     cucul_clear_canvas(m_canvas);
   }
 
