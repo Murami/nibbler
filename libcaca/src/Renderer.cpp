@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sat Apr  5 23:51:14 2014 
+// Last update Sun Apr  6 02:00:02 2014 
 //
 
 #include <iostream>
@@ -20,8 +20,9 @@ namespace API
   Renderer::Renderer(int width, int height)
   {
     m_open = true;
-    initWindow(width, height);
+    initWindow(width * 2, height + 1);
     initBinds();
+    initRessource();
   }
 
   Renderer::~Renderer()
@@ -29,7 +30,6 @@ namespace API
     caca_free_display(m_display);
     cucul_free_canvas(m_canvas);
   }
-
 
   void	Renderer::initWindow(int width, int height)
   {
@@ -50,6 +50,30 @@ namespace API
     eventKeyBinds[static_cast<caca_key>(' ')] = Key::Space;
     eventKeyBinds[CACA_KEY_ESCAPE] = Key::Escape;
     eventKeyBinds[CACA_KEY_RETURN] = Key::Return;
+  }
+
+  std::string	Renderer::toString(int i) const
+  {
+    std::stringstream   ss;
+
+    ss << i;
+    return (ss.str());
+  }
+
+  void	Renderer::initRessource()
+  {
+    int			i;
+    std::string		str;
+
+    i = 1;
+    while (i <= 48)
+      {
+	str = toString(i);
+	m_ressources[str] = CACA_LIGHTGREEN;
+	i++;
+      }
+    m_ressources["apple"] = CACA_RED;
+    m_ressources["head"] = CACA_GREEN;
   }
 
   void	Renderer::close()
@@ -117,18 +141,36 @@ namespace API
   void	Renderer::draw(const std::string& ressource, int x, int y,
 		       int rotation) const
   {
+    cucul_set_color(m_canvas, m_ressources.at(ressource), m_ressources.at(ressource));
+    cucul_draw_box(m_canvas, x * 2, cucul_get_canvas_height(m_canvas) - (y + 2), 2, 1, 'o');
   }
 
   void	Renderer::drawBackground(int x, int y) const
   {
+    (void) x;
+    (void) y;
+    cucul_set_color(m_canvas, CACA_BLACK, CACA_BLACK);
+    cucul_draw_box(m_canvas, 0,
+		   cucul_get_canvas_height(m_canvas) - 1,
+		   cucul_get_canvas_width(m_canvas), 1, 'o');
   }
 
   void	Renderer::drawScore(int score) const
   {
+    cucul_set_color(m_canvas, CACA_WHITE, CACA_BLACK);
+    cucul_printf(m_canvas,
+		 2,
+		 cucul_get_canvas_height(m_canvas) - 1,
+		 "score : %d", score);
   }
 
   void	Renderer::drawBoost(int boost, int boostmax) const
   {
+    cucul_set_color(m_canvas, CACA_WHITE, CACA_BLACK);
+    cucul_printf(m_canvas,
+		 cucul_get_canvas_width(m_canvas) / 2,
+		 cucul_get_canvas_height(m_canvas) - 1,
+		 "boost : %d / 100", boost * 100 / boostmax);
   }
 };
 

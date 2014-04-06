@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sat Apr  5 20:08:21 2014 
+// Last update Sun Apr  6 00:13:52 2014 
 //
 
 #include <exception>
@@ -57,20 +57,23 @@ namespace API
     loadTexture("snake", "opengl/assets/sprites/snake.jpg");
     loadTexture("limit", "opengl/assets/sprites/limit.png");
 
-    //bind events
+  }
+
+
+  Renderer::~Renderer()
+  {
+  }
+
+  void	Renderer::initBinds()
+  {
     eventBinds[sf::Event::Closed] = Event::Closed;
     eventBinds[sf::Event::KeyPressed] = Event::KeyPressed;
     eventBinds[sf::Event::KeyReleased] = Event::KeyReleased;
-
     eventKeyBinds[sf::Key::Left] = Key::Left;
     eventKeyBinds[sf::Key::Right] = Key::Right;
     eventKeyBinds[sf::Key::Space] = Key::Space;
     eventKeyBinds[sf::Key::Escape] = Key::Escape;
     eventKeyBinds[sf::Key::Return] = Key::Return;
-  }
-
-  Renderer::~Renderer()
-  {
   }
 
   void	Renderer::close()

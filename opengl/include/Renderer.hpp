@@ -6,7 +6,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sat Apr  5 20:00:46 2014 
+// Last update Sun Apr  6 00:12:57 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -27,6 +27,8 @@ namespace API
   public:
     Renderer(int x, int y);
     ~Renderer();
+
+    void	initBinds();
 
     bool	getEvent(Event& event) const;
     void	close();

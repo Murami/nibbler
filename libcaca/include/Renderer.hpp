@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:19:32 2014
-// Last update Sat Apr  5 23:15:59 2014 
+// Last update Sun Apr  6 01:58:18 2014 
 //
 
 #ifndef RENDERER_HPP
@@ -36,6 +36,7 @@ namespace API
 
     void	initWindow(int, int);
     void	initBinds();
+    void	initRessource();
 
     //game draws
 
@@ -45,14 +46,16 @@ namespace API
     void	drawScore(int score) const;
     void	drawBoost(int boost, int boostmax) const;
 
+    //misc
+
+    std::string	toString(int i) const;
   private:
     caca_canvas_t*	m_canvas;
     caca_display_t*	m_display;
     bool		m_open;
-
-  public:
     std::map<caca_key, Key::Code>		eventKeyBinds;
     std::map<caca_event_type, Event::EventType>	eventBinds;
+    std::map<std::string, int>			m_ressources;
   };
 };
 
