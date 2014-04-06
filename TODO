@@ -1,9 +1,4 @@
-
-- Taille de map invalide (-1, 0)
-- Gerer taille min de la map
-
-
-- env -i ou -u (check les retours de fonctions) (FAIT MAIS RERERERERECHECK TOUT)
-
+- env -i ou -u (check les retours de fonctions) (FAIT MAIS, RERERERERECHECK TOUT L'ENV))
+- Commentaire crade a enlever dans le code ? ...
 
 - AUTRE LIBS ... ?
