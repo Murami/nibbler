@@ -5,7 +5,7 @@
 // Login   <desabr_q@epitech.net>
 //
 // Started on  Sun Apr  6 05:11:34 2014 quentin desabre
-// Last update Sun Apr  6 05:31:13 2014 
+// Last update Sun Apr  6 11:34:04 2014 
 //
 
 #include <cstdlib>
@@ -42,6 +42,7 @@ Snake::Snake() :
 
 Snake::~Snake()
 {
+  std::cout << "Your score is : " << m_score << std::endl;
 }
 
 void	Snake::enableBoost()
