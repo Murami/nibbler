@@ -5,7 +5,7 @@
 // Login   <otoshigami@epitech.net>
 //
 // Started on  Tue Mar 25 15:22:12 2014
-// Last update Sun Apr  6 02:00:02 2014 
+// Last update Sun Apr  6 04:14:34 2014 Desabre Quentin
 //
 
 #include <iostream>
@@ -117,7 +117,8 @@ namespace API
 
   void	Renderer::clear() const
   {
-    caca_set_color_ansi(m_canvas, CACA_BLACK, CACA_WHITE);
+    cucul_set_color_ansi(m_canvas, CACA_BLACK, CACA_WHITE);
+    // caca_set_color_ansi(m_canvas, CACA_BLACK, CACA_WHITE);
     cucul_clear_canvas(m_canvas);
   }
 
@@ -141,7 +142,8 @@ namespace API
   void	Renderer::draw(const std::string& ressource, int x, int y,
 		       int rotation) const
   {
-    cucul_set_color(m_canvas, m_ressources.at(ressource), m_ressources.at(ressource));
+    (void) rotation;
+    cucul_set_color_ansi(m_canvas, m_ressources.at(ressource), m_ressources.at(ressource));
     cucul_draw_box(m_canvas, x * 2, cucul_get_canvas_height(m_canvas) - (y + 2), 2, 1, 'o');
   }
 
@@ -149,7 +151,7 @@ namespace API
   {
     (void) x;
     (void) y;
-    cucul_set_color(m_canvas, CACA_BLACK, CACA_BLACK);
+    cucul_set_color_ansi(m_canvas, CACA_BLACK, CACA_BLACK);
     cucul_draw_box(m_canvas, 0,
 		   cucul_get_canvas_height(m_canvas) - 1,
 		   cucul_get_canvas_width(m_canvas), 1, 'o');
@@ -157,7 +159,7 @@ namespace API
 
   void	Renderer::drawScore(int score) const
   {
-    cucul_set_color(m_canvas, CACA_WHITE, CACA_BLACK);
+    cucul_set_color_ansi(m_canvas, CACA_WHITE, CACA_BLACK);
     cucul_printf(m_canvas,
 		 2,
 		 cucul_get_canvas_height(m_canvas) - 1,
@@ -166,7 +168,7 @@ namespace API
 
   void	Renderer::drawBoost(int boost, int boostmax) const
   {
-    cucul_set_color(m_canvas, CACA_WHITE, CACA_BLACK);
+    cucul_set_color_ansi(m_canvas, CACA_WHITE, CACA_BLACK);
     cucul_printf(m_canvas,
 		 cucul_get_canvas_width(m_canvas) / 2,
 		 cucul_get_canvas_height(m_canvas) - 1,
