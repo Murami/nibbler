@@ -5,7 +5,7 @@
 // Login   <guerot_a@epitech.net>
 //
 // Started on  Tue Apr  1 22:05:46 2014 guerot_a
-// Last update Sun Apr  6 05:09:02 2014 Desabre Quentin
+// Last update Sun Apr  6 05:28:44 2014 
 //
 
 #include <iostream>
@@ -16,6 +16,7 @@
 #include "MulScore.hpp"
 #include "MulLimb.hpp"
 #include "InvertBoost.hpp"
+#include "Wall.hpp"
 #include "IObject.hpp"
 #include "Renderer.hpp"
 #include "MapObject.hpp"
@@ -30,6 +31,7 @@ MapObject::MapObject()
   m_objectFactory.learn("MulScore", new MulScore);
   m_objectFactory.learn("MulLimb", new MulLimb);
   m_objectFactory.learn("InvertBoost", new InvertBoost);
+  m_objectFactory.learn("Wall", new Wall);
 }
 
 MapObject::~MapObject()
