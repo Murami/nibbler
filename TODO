@@ -1,14 +1,9 @@
-- Sprite pomme opengl
-- Sprite tete opengl
-- HUD Opengl
-- Pointeur fonctions draw opengl
+
 - Taille de map invalide (-1, 0)
 - Gerer taille min de la map
-- env -i ou -u (check les retours de fonctions)
-- gestion du fps dans la boucle de game
-- libcaca
 
-BONUS:
-- bonus ...
-- ncurses
-- mlx
+
+- env -i ou -u (check les retours de fonctions) (FAIT MAIS RERERERERECHECK TOUT)
+
+
+- AUTRE LIBS ... ?
